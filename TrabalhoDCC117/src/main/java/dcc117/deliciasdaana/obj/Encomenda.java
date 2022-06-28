@@ -17,6 +17,7 @@ public class Encomenda
     private Data dataDoPedido;
     private Data dataDeEntrega;
     private double valorTotal;
+    private double gastoTotal;
     private String info;
     private List<Produto> produtos;
     
@@ -43,6 +44,11 @@ public class Encomenda
     public double getValorTotal()
     {
         return this.valorTotal;
+    }
+    
+    public double getGastoTotal()
+    {
+        return this.gastoTotal;
     }
     
     public String getInfo()
@@ -73,6 +79,11 @@ public class Encomenda
     public void setValorTotal(double valorTotal)
     {
         this.valorTotal = valorTotal;
+    }
+    
+    public void setGastoTotal(double gastoTotal)
+    {
+        this.gastoTotal = gastoTotal;
     }
     
     public void setInfo(String info)

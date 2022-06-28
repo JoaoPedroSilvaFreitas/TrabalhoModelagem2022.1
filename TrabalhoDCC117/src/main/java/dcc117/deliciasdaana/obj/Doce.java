@@ -4,6 +4,8 @@
  */
 package dcc117.deliciasdaana.obj;
 
+import java.util.*;
+
 /**
  *
  * @author joaop
@@ -11,6 +13,8 @@ package dcc117.deliciasdaana.obj;
 public class Doce extends Produto
 {
     private String sabor;
+    private float valor;
+    private List<Ingrediente> ingredientes;
     
     public void setSabor(String sabor)
     {

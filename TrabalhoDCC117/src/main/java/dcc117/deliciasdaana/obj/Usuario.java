@@ -4,6 +4,8 @@
  */
 package dcc117.deliciasdaana.obj;
 
+import java.util.*;
+
 /**
  *
  * @author joaop
@@ -11,6 +13,9 @@ package dcc117.deliciasdaana.obj;
 public class Usuario 
 {
     private String senha;
+    private List<Encomenda> encomendas;
+    private List<Cliente> clientes;
+    private List<Ingrediente> ingredientes;
     
     public String getSenha()
     {
@@ -21,4 +26,6 @@ public class Usuario
     {
         this.senha = senha;
     }
+    
+    
 }

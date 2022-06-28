@@ -13,6 +13,7 @@ public class Data
     private int dia;
     private int mes;
     private int ano;
+    private boolean disponivel;
     
     
     Data(int dia, int mes, int ano)
@@ -37,6 +38,11 @@ public class Data
         return this.ano;
     }
     
+    public boolean getDisponivel()
+    {
+        return this.disponivel;
+    }
+    
     public void setDia(int dia)
     {
         this.dia = dia;
@@ -50,6 +56,18 @@ public class Data
     public void setAno(int ano)
     {
         this.ano = ano;
+    }
+    
+    public void setDisponivel(boolean disponivel)
+    {
+        this.disponivel = disponivel;
+    }
+    
+    //toString
+    @Override
+    public String toString()
+    {
+        return this.dia + "/" + this.mes + "/" + this.ano;
     }
     
 }

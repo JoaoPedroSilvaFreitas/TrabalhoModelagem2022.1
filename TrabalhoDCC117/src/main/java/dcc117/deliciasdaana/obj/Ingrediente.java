@@ -8,10 +8,11 @@ package dcc117.deliciasdaana.obj;
  *
  * @author joaop
  */
-public abstract class Produto 
+public class Ingrediente 
 {
-    protected double valor;
-    protected int quantidade;
+    private double valor;
+    private int quantidade;
+    private String nome;
     
     public double getValor()
     {
@@ -21,6 +22,11 @@ public abstract class Produto
     public int getQuantidade()
     {
         return this.quantidade;
+    }
+    
+    public String getNome()
+    {
+        return this.nome;
     }
     
     public void setValor(double valor)
@@ -33,4 +39,8 @@ public abstract class Produto
         this.quantidade = quantidade;
     }
     
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
 }

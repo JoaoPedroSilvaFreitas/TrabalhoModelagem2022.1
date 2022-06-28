@@ -4,6 +4,8 @@
  */
 package dcc117.deliciasdaana.obj;
 
+import java.util.*;
+
 /**
  *
  * @author joaop
@@ -13,6 +15,8 @@ public class Bolo extends Produto
     private String saborMassa;
     private String saborRecheio;
     private String tamanho;
+    private float valor;
+    private List<Ingrediente> ingredientes;
    
     public void setSaborMassa(String saborMassa)
     {
