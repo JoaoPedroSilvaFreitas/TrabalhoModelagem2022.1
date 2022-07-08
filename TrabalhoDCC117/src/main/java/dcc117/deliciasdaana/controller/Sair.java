@@ -8,38 +8,41 @@ package dcc117.deliciasdaana.controller;
  *
  * @author joaop
  */
-
-import dcc117.deliciasdaana.model.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import dcc117.deliciasdaana.view.*;
 
-
-public class Login implements ActionListener
+public class Sair implements ActionListener
 {
     private Tela tela;
+    private int TelaId;
     
-    public Login(Tela tela)
+    public Sair(Tela tela, int TelaId)
     {
         this.tela = tela;
+        this.TelaId = TelaId;
     }
     
     public void actionPerformed(ActionEvent e)
     {
-        boolean login = false;
+        if(TelaId == 1)
+        {
+            tela.visibilidadeTelaUsuario();
+            tela.telaPrincipal();
+        }else
+            {
+                if(TelaId == 2)
+                {
+                   
+                }else
+                    {
+                        if(TelaId == 3)
+                        {
+                           
+                        }
+                    }
+            }
         
-        if(tela.getSenha().getText().equals("Admin"))
-        {
-            Usuario usuario = new Usuario();
-            tela.telaUsuario(usuario);
-            login = true;
-        }
-
-        if(login == false)
-        {
-            JOptionPane.showMessageDialog(tela, "Senha inválida");
-        }
     }
 }
