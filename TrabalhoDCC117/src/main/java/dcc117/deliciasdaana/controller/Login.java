@@ -20,6 +20,7 @@ import dcc117.deliciasdaana.view.*;
 public class Login implements ActionListener
 {
     private Tela tela;
+    public static Usuario usuario;
     
     public Login(Tela tela)
     {
@@ -32,7 +33,7 @@ public class Login implements ActionListener
         
         if(tela.getSenha().getText().equals("Admin"))
         {
-            Usuario usuario = new Usuario();
+            usuario = new Usuario();
             tela.telaUsuario(usuario);
             login = true;
         }

@@ -16,11 +16,18 @@ import dcc117.deliciasdaana.controller.*;
 
 public class Tela extends JFrame
 {
+    private Usuario usuario;
+    private JPasswordField senha;
+    
     private JPanel painelPrincipal;
     private JPanel painelLogin;
     private JPanel painelUsuario;
     private JPanel painelRegistraEncomenda;
     private JPanel painelRegistraCliente;
+    private JPanel painelRegistraIngrediente;
+    private JPanel painelConsultaGastoLucro;
+    private JPanel painelRelatorio;
+    private JPanel painelCalendario;
     
     private ImageIcon imagemLogo = new ImageIcon("images/logo.jpg");
     private ImageIcon imagemSetaLogin = new ImageIcon("images/seta.jpg");
@@ -32,9 +39,6 @@ public class Tela extends JFrame
     private ImageIcon imagemCalendario = new ImageIcon("images/botaoCalendario.jpg");
     private ImageIcon imagemRelatorio = new ImageIcon("images/botaoRelatorio.jpg");
     
-    private JLabel vazio = new JLabel();
-    
-    private JPasswordField senha;
     
     Tela()
     {
@@ -66,9 +70,6 @@ public class Tela extends JFrame
         JLabel null4 = new JLabel();
         JLabel null5 = new JLabel();
         JLabel null6 = new JLabel();
-        JLabel null7 = new JLabel();
-        JLabel null8 = new JLabel();
-        JLabel null9 = new JLabel();
         
         
         
@@ -110,6 +111,8 @@ public class Tela extends JFrame
     
     public void telaUsuario(Usuario usuario)
     {
+        this.usuario = usuario;
+        
         painelPrincipal.setVisible(false);
         //this.setSize(1280,720);
         this.setVisible(true);
@@ -147,7 +150,7 @@ public class Tela extends JFrame
         registrarClienteBtn.setBackground(new Color(239,186,237));
         registrarClienteBtn.setBorderPainted(false);
         registrarClienteBtn.setIcon(imagemRegistraCliente);
-        registrarClienteBtn.addActionListener(new registrarEncomenda(this));
+        registrarClienteBtn.addActionListener(new registrarCliente(this));
         painelFuncoes.add(registrarClienteBtn);
         
         JButton registrarEncomendaBtn;
@@ -156,8 +159,14 @@ public class Tela extends JFrame
         registrarEncomendaBtn.setBackground(new Color(239,186,237));
         registrarEncomendaBtn.setBorderPainted(false);
         registrarEncomendaBtn.setIcon(imagemRegistraEncomenda);
-        registrarEncomendaBtn.addActionListener(new registrarCliente(this));
+        registrarEncomendaBtn.addActionListener(new registrarEncomenda(this));
         painelFuncoes.add(registrarEncomendaBtn);
+        
+        /*
+        if(usuario.getClientes() == null || usuario.getClientes().isEmpty())
+        {
+            registrarEncomendaBtn.enable(false);
+        }*/
         
         JButton registrarIngredienteBtn;
         registrarIngredienteBtn = new JButton();
@@ -165,7 +174,7 @@ public class Tela extends JFrame
         registrarIngredienteBtn.setBackground(new Color(239,186,237));
         registrarIngredienteBtn.setBorderPainted(false);
         registrarIngredienteBtn.setIcon(imagemRegistraIngrediente);
-        //registrarIngredienteBtn.addActionListener(new registrarIngrediente(this));
+        registrarIngredienteBtn.addActionListener(new registrarIngrediente(this));
         painelFuncoes.add(registrarIngredienteBtn);
         
         JButton consultarGastoLucroBtn;
@@ -174,7 +183,7 @@ public class Tela extends JFrame
         consultarGastoLucroBtn.setBackground(new Color(239,186,237));
         consultarGastoLucroBtn.setBorderPainted(false);
         consultarGastoLucroBtn.setIcon(imagemGastoLucro);
-        //consultarGastoLucroBtn.addActionListener(new consultarGastoLucro(this));
+        consultarGastoLucroBtn.addActionListener(new consultarGastoLucro(this));
         painelFuncoes.add(consultarGastoLucroBtn);
         
         JButton relatorioEncomendaBtn;
@@ -183,7 +192,7 @@ public class Tela extends JFrame
         relatorioEncomendaBtn.setBackground(new Color(239,186,237));
         relatorioEncomendaBtn.setBorderPainted(false);
         relatorioEncomendaBtn.setIcon(imagemRelatorio);
-        //relatorioEncomendaBtn.addActionListener(new relatorioEncomendas(this));
+        relatorioEncomendaBtn.addActionListener(new relatorio(this));
         painelFuncoes.add(relatorioEncomendaBtn);
         
         JButton calendarioBtn;
@@ -192,7 +201,7 @@ public class Tela extends JFrame
         calendarioBtn.setBackground(new Color(239,186,237));
         calendarioBtn.setBorderPainted(false);
         calendarioBtn.setIcon(imagemCalendario);
-        //calendarioBtn.addActionListener(new calendario(this));
+        calendarioBtn.addActionListener(new calendario(this));
         painelFuncoes.add(calendarioBtn);
         
         
@@ -201,22 +210,212 @@ public class Tela extends JFrame
     
     public void telaRegistraEncomenda()
     {
+        visibilidadeTelaUsuario();
+        //this.setSize(1280,720);
+        this.setVisible(true);
         
+        this.painelRegistraEncomenda = new JPanel();
+        this.painelRegistraEncomenda.setLayout(new BorderLayout());
+        this.painelRegistraEncomenda.setBackground(new Color(239,186,237));
+        
+        telaRegistraEncomendaAux();
+        
+        this.add(this.painelRegistraEncomenda);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.repaint();
     }
     
     private void telaRegistraEncomendaAux()
     {
+        JButton sairBtn;
+        sairBtn = new JButton("",imagemSetaSair);
+        sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        sairBtn.setBackground(new Color(106,64,24));
+        sairBtn.setBorderPainted(false);
+        sairBtn.addActionListener(new Sair(this,3));
+        this.painelRegistraEncomenda.add(sairBtn,BorderLayout.WEST);
         
+        JPanel painelFuncoes;
+        painelFuncoes = new JPanel();
+        painelFuncoes.setBackground(new Color(239,186,237));
+        painelFuncoes.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        this.painelRegistraEncomenda.add(painelFuncoes,BorderLayout.CENTER);
     }
     
     public void telaRegistraCliente()
     {
+        visibilidadeTelaUsuario();
+        //this.setSize(1280,720);
+        this.setVisible(true);
         
+        this.painelRegistraCliente = new JPanel();
+        this.painelRegistraCliente.setLayout(new BorderLayout());
+        this.painelRegistraCliente.setBackground(new Color(239,186,237));
+        
+        telaRegistraClienteAux();
+        
+        this.add(this.painelRegistraCliente);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.repaint();
     }
     
     private void telaRegistraClienteAux()
     {
+        JButton sairBtn;
+        sairBtn = new JButton("",imagemSetaSair);
+        sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        sairBtn.setBackground(new Color(106,64,24));
+        sairBtn.setBorderPainted(false);
+        sairBtn.addActionListener(new Sair(this,2));
+        this.painelRegistraCliente.add(sairBtn,BorderLayout.WEST);
         
+        JPanel painelFuncoes;
+        painelFuncoes = new JPanel();
+        painelFuncoes.setBackground(new Color(239,186,237));
+        painelFuncoes.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        this.painelRegistraCliente.add(painelFuncoes,BorderLayout.CENTER);
+    }
+    
+    public void telaRegistraIngrediente()
+    {
+        visibilidadeTelaUsuario();
+        //this.setSize(1280,720);
+        this.setVisible(true);
+        
+        this.painelRegistraIngrediente = new JPanel();
+        this.painelRegistraIngrediente.setLayout(new BorderLayout());
+        this.painelRegistraIngrediente.setBackground(new Color(239,186,237));
+        
+        telaRegistraIngredienteAux();
+        
+        this.add(this.painelRegistraIngrediente);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.repaint();
+    }
+    
+    private void telaRegistraIngredienteAux()
+    {
+        JButton sairBtn;
+        sairBtn = new JButton("",imagemSetaSair);
+        sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        sairBtn.setBackground(new Color(106,64,24));
+        sairBtn.setBorderPainted(false);
+        sairBtn.addActionListener(new Sair(this,4));
+        this.painelRegistraIngrediente.add(sairBtn,BorderLayout.WEST);
+        
+        JPanel painelFuncoes;
+        painelFuncoes = new JPanel();
+        painelFuncoes.setBackground(new Color(239,186,237));
+        painelFuncoes.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        this.painelRegistraIngrediente.add(painelFuncoes,BorderLayout.CENTER);
+    }
+    
+    public void telaConsultaGastoLucro()
+    {
+        visibilidadeTelaUsuario();
+        //this.setSize(1280,720);
+        this.setVisible(true);
+        
+        this.painelConsultaGastoLucro = new JPanel();
+        this.painelConsultaGastoLucro.setLayout(new BorderLayout());
+        this.painelConsultaGastoLucro.setBackground(new Color(239,186,237));
+        
+        telaConsultaGastoLucroAux();
+        
+        this.add(this.painelConsultaGastoLucro);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.repaint();
+    }
+    
+    private void telaConsultaGastoLucroAux()
+    {
+        JButton sairBtn;
+        sairBtn = new JButton("",imagemSetaSair);
+        sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        sairBtn.setBackground(new Color(106,64,24));
+        sairBtn.setBorderPainted(false);
+        sairBtn.addActionListener(new Sair(this,5));
+        this.painelConsultaGastoLucro.add(sairBtn,BorderLayout.WEST);
+        
+        JPanel painelFuncoes;
+        painelFuncoes = new JPanel();
+        painelFuncoes.setBackground(new Color(239,186,237));
+        painelFuncoes.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        this.painelConsultaGastoLucro.add(painelFuncoes,BorderLayout.CENTER);
+    }
+    
+    public void telaRelatorio()
+    {
+        visibilidadeTelaUsuario();
+        //this.setSize(1280,720);
+        this.setVisible(true);
+        
+        this.painelRelatorio = new JPanel();
+        this.painelRelatorio.setLayout(new BorderLayout());
+        this.painelRelatorio.setBackground(new Color(239,186,237));
+        
+        telaRelatorioAux();
+        
+        this.add(this.painelRelatorio);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.repaint();
+    }
+    
+    private void telaRelatorioAux()
+    {
+        JButton sairBtn;
+        sairBtn = new JButton("",imagemSetaSair);
+        sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        sairBtn.setBackground(new Color(106,64,24));
+        sairBtn.setBorderPainted(false);
+        sairBtn.addActionListener(new Sair(this,6));
+        this.painelRelatorio.add(sairBtn,BorderLayout.WEST);
+        
+        JPanel painelFuncoes;
+        painelFuncoes = new JPanel();
+        painelFuncoes.setBackground(new Color(239,186,237));
+        painelFuncoes.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        this.painelRelatorio.add(painelFuncoes,BorderLayout.CENTER);
+    }
+    
+    public void telaCalendario()
+    {
+        visibilidadeTelaUsuario();
+        //this.setSize(1280,720);
+        this.setVisible(true);
+        
+        this.painelCalendario = new JPanel();
+        this.painelCalendario.setLayout(new BorderLayout());
+        this.painelCalendario.setBackground(new Color(239,186,237));
+        
+        telaCalendarioAux();
+        
+        this.add(this.painelCalendario);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.repaint();
+    }
+    
+    private void telaCalendarioAux()
+    {
+        JButton sairBtn;
+        sairBtn = new JButton("",imagemSetaSair);
+        sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        sairBtn.setBackground(new Color(106,64,24));
+        sairBtn.setBorderPainted(false);
+        sairBtn.addActionListener(new Sair(this,7));
+        this.painelCalendario.add(sairBtn,BorderLayout.WEST);
+        
+        JPanel painelFuncoes;
+        painelFuncoes = new JPanel();
+        painelFuncoes.setBackground(new Color(239,186,237));
+        painelFuncoes.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        this.painelCalendario.add(painelFuncoes,BorderLayout.CENTER);
     }
     
     public static void main(String[] args) 
@@ -253,5 +452,25 @@ public class Tela extends JFrame
     public void visibilidadeTelaRegistraCliente()
     {
         this.painelRegistraCliente.setVisible(false);
+    }
+    
+    public void visibilidadeTelaRegistraIngrediente()
+    {
+        this.painelRegistraIngrediente.setVisible(false);
+    }
+    
+    public void visibilidadeTelaConsultaGastoLucro()
+    {
+        this.painelConsultaGastoLucro.setVisible(false);
+    }
+    
+    public void visibilidadeTelaRelatorio()
+    {
+        this.painelRelatorio.setVisible(false);
+    }
+    
+    public void visibilidadeTelaCalendario()
+    {
+        this.painelCalendario.setVisible(false);
     }
 }
