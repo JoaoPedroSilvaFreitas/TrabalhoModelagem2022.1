@@ -29,6 +29,15 @@ public class Tela extends JFrame
     private JPanel painelRelatorio;
     private JPanel painelCalendario;
     
+    private JTextField cadastrarNomeCliente;
+    private JTextField cadastrarTelefoneCliente;
+    private JTextField cadastrarEnderecoCliente;
+    
+    private JTextField cadastrarNomeIngrediente;
+    private JTextField cadastrarValorIngrediente;
+    private JTextField cadastrarQuantidadeIngrediente;
+    
+    
     private ImageIcon imagemLogo = new ImageIcon("images/logo.jpg");
     private ImageIcon imagemSetaLogin = new ImageIcon("images/seta.jpg");
     private ImageIcon imagemSetaSair = new ImageIcon("images/sair.jpg");
@@ -262,6 +271,20 @@ public class Tela extends JFrame
     
     private void telaRegistraClienteAux()
     {
+        JLabel null0 = new JLabel();
+        JLabel null1 = new JLabel();
+        JLabel null2 = new JLabel();
+        JLabel null3 = new JLabel();
+        JLabel null4 = new JLabel();
+        JLabel null5 = new JLabel();
+        JLabel null6 = new JLabel();
+        JLabel null7 = new JLabel();
+        JLabel null8 = new JLabel();
+        JLabel null9 = new JLabel();
+        JLabel null10 = new JLabel();
+        JLabel null11 = new JLabel();
+        JLabel null12 = new JLabel();
+        
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
         sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
@@ -270,11 +293,58 @@ public class Tela extends JFrame
         sairBtn.addActionListener(new Sair(this,2));
         this.painelRegistraCliente.add(sairBtn,BorderLayout.WEST);
         
+        JButton cadastrarBtn;
+        cadastrarBtn = new JButton("",imagemSetaLogin);
+        cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        cadastrarBtn.setBackground(new Color(106,64,24));
+        cadastrarBtn.setBorderPainted(false);
+        cadastrarBtn.addActionListener(new cadastrar(this,1));
+        this.painelRegistraCliente.add(cadastrarBtn,BorderLayout.EAST);
+        
         JPanel painelFuncoes;
         painelFuncoes = new JPanel();
         painelFuncoes.setBackground(new Color(239,186,237));
         painelFuncoes.setLayout(new GridLayout(0,3));
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        painelFuncoes.add(null3);
+        painelFuncoes.add(null4);
+        painelFuncoes.add(null5);
+        
+        JLabel Nome = new JLabel("Nome:", SwingConstants.CENTER);
+        Nome.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(Nome);
+        cadastrarNomeCliente = new JTextField(100);
+        cadastrarNomeCliente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(cadastrarNomeCliente);
+        painelFuncoes.add(null0);
+        
+        painelFuncoes.add(null6);
+        painelFuncoes.add(null7);
+        painelFuncoes.add(null8);
+        
+        JLabel Telefone = new JLabel("Telefone:", SwingConstants.CENTER);
+        Telefone.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(Telefone);
+        cadastrarTelefoneCliente = new JTextField(100);
+        cadastrarTelefoneCliente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(cadastrarTelefoneCliente);
+        painelFuncoes.add(null1);
+        
+        painelFuncoes.add(null9);
+        painelFuncoes.add(null10);
+        painelFuncoes.add(null11);
+        
+        JLabel Endereco = new JLabel("Endereço:", SwingConstants.CENTER);
+        Endereco.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(Endereco);
+        cadastrarEnderecoCliente = new JTextField(100);
+        cadastrarEnderecoCliente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(cadastrarEnderecoCliente);
+        painelFuncoes.add(null2);
+        
+        painelFuncoes.add(null12);
+        
         this.painelRegistraCliente.add(painelFuncoes,BorderLayout.CENTER);
     }
     
@@ -297,6 +367,20 @@ public class Tela extends JFrame
     
     private void telaRegistraIngredienteAux()
     {
+        JLabel null0 = new JLabel();
+        JLabel null1 = new JLabel();
+        JLabel null2 = new JLabel();
+        JLabel null3 = new JLabel();
+        JLabel null4 = new JLabel();
+        JLabel null5 = new JLabel();
+        JLabel null6 = new JLabel();
+        JLabel null7 = new JLabel();
+        JLabel null8 = new JLabel();
+        JLabel null9 = new JLabel();
+        JLabel null10 = new JLabel();
+        JLabel null11 = new JLabel();
+        JLabel null12 = new JLabel();
+        
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
         sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
@@ -305,11 +389,58 @@ public class Tela extends JFrame
         sairBtn.addActionListener(new Sair(this,4));
         this.painelRegistraIngrediente.add(sairBtn,BorderLayout.WEST);
         
+        JButton cadastrarBtn;
+        cadastrarBtn = new JButton("",imagemSetaLogin);
+        cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        cadastrarBtn.setBackground(new Color(106,64,24));
+        cadastrarBtn.setBorderPainted(false);
+        cadastrarBtn.addActionListener(new cadastrar(this,3));
+        this.painelRegistraIngrediente.add(cadastrarBtn,BorderLayout.EAST);
+        
         JPanel painelFuncoes;
         painelFuncoes = new JPanel();
         painelFuncoes.setBackground(new Color(239,186,237));
         painelFuncoes.setLayout(new GridLayout(0,3));
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        painelFuncoes.add(null3);
+        painelFuncoes.add(null4);
+        painelFuncoes.add(null5);
+        
+        JLabel Nome = new JLabel("Nome:", SwingConstants.CENTER);
+        Nome.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(Nome);
+        cadastrarNomeIngrediente = new JTextField(100);
+        cadastrarNomeIngrediente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(cadastrarNomeIngrediente);
+        painelFuncoes.add(null0);
+        
+        painelFuncoes.add(null6);
+        painelFuncoes.add(null7);
+        painelFuncoes.add(null8);
+        
+        JLabel Telefone = new JLabel("Valor:", SwingConstants.CENTER);
+        Telefone.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(Telefone);
+        cadastrarValorIngrediente = new JTextField(100);
+        cadastrarValorIngrediente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(cadastrarValorIngrediente);
+        painelFuncoes.add(null1);
+        
+        painelFuncoes.add(null9);
+        painelFuncoes.add(null10);
+        painelFuncoes.add(null11);
+        
+        JLabel Endereco = new JLabel("Quantidade:", SwingConstants.CENTER);
+        Endereco.setFont(new Font("Arial", Font.PLAIN, 46));
+        painelFuncoes.add(Endereco);
+        cadastrarQuantidadeIngrediente = new JTextField(100);
+        cadastrarQuantidadeIngrediente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoes.add(cadastrarQuantidadeIngrediente);
+        painelFuncoes.add(null2);
+        
+        painelFuncoes.add(null12);
+        
         this.painelRegistraIngrediente.add(painelFuncoes,BorderLayout.CENTER);
     }
     
@@ -424,18 +555,83 @@ public class Tela extends JFrame
         tela.telaPrincipal();
         tela.pack();
     }
-    
+
     
     //get
+    public Usuario getUsuario()
+    {
+        return this.usuario;
+    }
+    
     public JPasswordField getSenha()
     {
         return this.senha;
+    }
+    
+    public JTextField getCadastrarNomeCliente() 
+    {
+        return cadastrarNomeCliente;
+    }
+    
+    public JTextField getCadastrarTelefoneCliente() 
+    {
+        return cadastrarTelefoneCliente;
+    }
+
+    public JTextField getCadastrarEnderecoCliente() 
+    {
+        return cadastrarEnderecoCliente;
+    }
+    
+    public JTextField getCadastrarNomeIngrediente() 
+    {
+        return cadastrarNomeIngrediente;
+    }
+    
+    public JTextField getCadastrarQuantidadeIngrediente() 
+    {
+        return cadastrarQuantidadeIngrediente;
+    }
+    
+    public JTextField getCadastrarValorIngrediente() 
+    {
+        return cadastrarValorIngrediente;
     }
     
     //set
     public void setSenha(JPasswordField senha)
     {
         this.senha = senha;
+    }
+    
+    public void setCadastrarNomeCliente(JTextField cadastrarNomeCliente) 
+    {
+        this.cadastrarNomeCliente = cadastrarNomeCliente;
+    }
+    
+    public void setCadastrarTelefoneCliente(JTextField cadastrarTelefoneCliente) 
+    {
+        this.cadastrarTelefoneCliente = cadastrarTelefoneCliente;
+    }
+    
+    public void setCadastrarEnderecoCliente(JTextField cadastrarEnderecoCliente) 
+    {
+        this.cadastrarEnderecoCliente = cadastrarEnderecoCliente;
+    }
+
+    public void setCadastrarNomeIngrediente(JTextField cadastrarNomeIngrediente) 
+    {
+        this.cadastrarNomeIngrediente = cadastrarNomeIngrediente;
+    }
+
+    public void setCadastrarValorIngrediente(JTextField cadastrarValorIngrediente) 
+    {
+        this.cadastrarValorIngrediente = cadastrarValorIngrediente;
+    }
+
+    public void setCadastrarQuantidadeIngrediente(JTextField cadastrarQuantidadeIngrediente) 
+    {
+        this.cadastrarQuantidadeIngrediente = cadastrarQuantidadeIngrediente;
     }
     
     //visibilidade

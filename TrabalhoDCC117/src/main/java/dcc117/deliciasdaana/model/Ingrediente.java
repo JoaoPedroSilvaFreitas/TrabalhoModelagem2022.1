@@ -14,6 +14,13 @@ public class Ingrediente
     private int quantidade;
     private String nome;
     
+    public Ingrediente(String nome, double valor, int quantidade)
+    {
+        this.nome = nome;
+        this.valor = valor;
+        this.quantidade = quantidade;
+    }
+    
     public double getValor()
     {
         return this.valor;

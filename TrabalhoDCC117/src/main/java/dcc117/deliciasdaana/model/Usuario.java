@@ -13,10 +13,25 @@ import java.util.*;
 public class Usuario 
 {
     private String senha;
-    private List<Encomenda> encomendas;
-    private List<Cliente> clientes;
-    private List<Ingrediente> ingredientes;
+    private List<Encomenda> encomendas = new ArrayList<Encomenda>();
+    private List<Cliente> clientes= new ArrayList<Cliente>();
+    private List<Ingrediente> ingredientes= new ArrayList<Ingrediente>();
 
+    public void addCliente(Cliente cliente)
+    {
+        clientes.add(cliente);
+    }
+    
+    public void addEncomenda(Encomenda encomenda)
+    {
+        encomendas.add(encomenda);
+    }
+    
+    public void addIngrediente(Ingrediente ingrediente)
+    {
+        ingredientes.add(ingrediente);
+    }
+    
     //get
     public String getSenha()
     {

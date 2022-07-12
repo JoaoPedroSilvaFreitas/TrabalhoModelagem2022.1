@@ -35,37 +35,37 @@ public class Sair implements ActionListener
                 if(TelaId == 2)
                 {
                    tela.visibilidadeTelaRegistraCliente();
-                   tela.telaUsuario(Login.usuario);
+                   tela.telaUsuario(tela.getUsuario());
                 }else
                     {
                         if(TelaId == 3)
                         {
                            tela.visibilidadeTelaRegistraEncomenda();
-                           tela.telaUsuario(Login.usuario);
+                           tela.telaUsuario(tela.getUsuario());
                         }else
                             {
                                 if(TelaId == 4)
                                 {
                                     tela.visibilidadeTelaRegistraIngrediente();
-                                    tela.telaUsuario(Login.usuario);
+                                    tela.telaUsuario(tela.getUsuario());
                                 }else
                                     {
                                         if(TelaId == 5)
                                         {
                                             tela.visibilidadeTelaConsultaGastoLucro();
-                                            tela.telaUsuario(Login.usuario);
+                                            tela.telaUsuario(tela.getUsuario());
                                         }else
                                             {
                                                 if(TelaId == 6)
                                                 {
                                                     tela.visibilidadeTelaRelatorio();
-                                                    tela.telaUsuario(Login.usuario);
+                                                    tela.telaUsuario(tela.getUsuario());
                                                 }else
                                                     {
                                                         if(TelaId == 7)
                                                         {
                                                             tela.visibilidadeTelaCalendario();
-                                                            tela.telaUsuario(Login.usuario);
+                                                            tela.telaUsuario(tela.getUsuario());
                                                         }
                                                     }
                                             }

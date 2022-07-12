@@ -14,9 +14,16 @@ public class Cliente
 {
     private int id;
     private String nome;
-    private int telefone;
+    private String telefone;
     private String endereco;
     private List<Encomenda> encomendas;
+    
+    public Cliente(String nome, String telefone, String endereco)
+    {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
     
     
     public int getId()
@@ -29,7 +36,7 @@ public class Cliente
         return this.nome;
     }
     
-    public int getTelefone()
+    public String getTelefone()
     {
         return this.telefone;
     }
@@ -49,7 +56,7 @@ public class Cliente
         this.nome = nome;
     }
     
-    public void setTelefone(int telefone)
+    public void setTelefone(String telefone)
     {
         this.telefone = telefone;
     }
