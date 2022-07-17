@@ -65,5 +65,12 @@ public class Cliente
     {
         this.endereco = endereco;
     }
-                            
+    
+    //toString
+    @Override
+    public String toString()
+    {
+        return this.nome + "  " + "   " + this.telefone + "   " + this.endereco;
+    }
+    
 }

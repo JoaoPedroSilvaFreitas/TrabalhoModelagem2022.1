@@ -21,6 +21,14 @@ public class Encomenda
     private String info;
     private List<Produto> produtos;
     
+    public Encomenda(Cliente cliente, Data dataDoPedido, Data dataDeEntrega, String info)
+    {
+        this.cliente = cliente;
+        this.dataDeEntrega = dataDeEntrega;
+        this.dataDoPedido = dataDoPedido;
+        this.info = info;
+    }
+    
     public int getId()
     {
         return this.id;

@@ -37,6 +37,15 @@ public class Tela extends JFrame
     private JTextField cadastrarValorIngrediente;
     private JTextField cadastrarQuantidadeIngrediente;
     
+    private JTextField cadastrarDataPedidoDia;
+    private JTextField cadastrarDataPedidoMes;
+    private JTextField cadastrarDataPedidoAno;
+    
+    private JTextField cadastrarDataEntregaDia;
+    private JTextField cadastrarDataEntregaMes;
+    private JTextField cadastrarDataEntregaAno;
+    
+    private JList<Cliente> clientes;
     
     private ImageIcon imagemLogo = new ImageIcon("images/logo.jpg");
     private ImageIcon imagemSetaLogin = new ImageIcon("images/seta.jpg");
@@ -236,6 +245,20 @@ public class Tela extends JFrame
     
     private void telaRegistraEncomendaAux()
     {
+        JLabel null0 = new JLabel();
+        JLabel null1 = new JLabel();
+        JLabel null2 = new JLabel();
+        JLabel null3 = new JLabel();
+        JLabel null4 = new JLabel();
+        JLabel null5 = new JLabel();
+        JLabel null6 = new JLabel();
+        JLabel null7 = new JLabel();
+        JLabel null8 = new JLabel();
+        JLabel null9 = new JLabel();
+        JLabel null10 = new JLabel();
+        JLabel null11 = new JLabel();
+        JLabel null12 = new JLabel();
+        
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
         sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
@@ -244,12 +267,92 @@ public class Tela extends JFrame
         sairBtn.addActionListener(new Sair(this,3));
         this.painelRegistraEncomenda.add(sairBtn,BorderLayout.WEST);
         
+        JButton cadastrarBtn;
+        cadastrarBtn = new JButton("",imagemSetaLogin);
+        cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        cadastrarBtn.setBackground(new Color(106,64,24));
+        cadastrarBtn.setBorderPainted(false);
+        cadastrarBtn.addActionListener(new cadastrar(this,1));
+        this.painelRegistraEncomenda.add(cadastrarBtn,BorderLayout.EAST);
+        
+        
         JPanel painelFuncoes;
         painelFuncoes = new JPanel();
         painelFuncoes.setBackground(new Color(239,186,237));
-        painelFuncoes.setLayout(new GridLayout(0,3));
+        painelFuncoes.setLayout(new BorderLayout());
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JPanel painelFuncoesEntrega;
+        painelFuncoesEntrega = new JPanel();
+        painelFuncoesEntrega.setBackground(new Color(239,186,237));
+        painelFuncoesEntrega.setLayout(new GridLayout(0,2));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JPanel painelDataPedido;
+        painelDataPedido = new JPanel();
+        painelDataPedido.setBackground(new Color(239,186,237));
+        painelDataPedido.setLayout(new GridLayout(0,4));
+        
+        JLabel DataPedido = new JLabel("Pedido:", SwingConstants.CENTER);
+        DataPedido.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDataPedido.add(DataPedido);
+        cadastrarDataPedidoDia = new JTextField(2);
+        cadastrarDataPedidoDia.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataPedido.add(cadastrarDataPedidoDia);
+        
+        cadastrarDataPedidoMes = new JTextField(2);
+        cadastrarDataPedidoMes.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataPedido.add(cadastrarDataPedidoMes);
+        
+        cadastrarDataPedidoAno = new JTextField(4);
+        cadastrarDataPedidoAno.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataPedido.add(cadastrarDataPedidoAno);
+        
+        painelFuncoesEntrega.add(painelDataPedido);
+        painelFuncoesEntrega.add(null0);
+        
+        JPanel painelDataEntrega;
+        painelDataEntrega = new JPanel();
+        painelDataEntrega.setBackground(new Color(239,186,237));
+        painelDataEntrega.setLayout(new GridLayout(0,4));
+        
+        JLabel DataEntrega = new JLabel("Entrega:", SwingConstants.CENTER);
+        DataEntrega.setFont(new Font("Arial", Font.PLAIN, 19));
+        painelDataEntrega.add(DataEntrega);
+        cadastrarDataEntregaDia = new JTextField(2);
+        cadastrarDataEntregaDia.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataEntrega.add(cadastrarDataEntregaDia);
+        
+        cadastrarDataEntregaMes = new JTextField(2);
+        cadastrarDataEntregaMes.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataEntrega.add(cadastrarDataEntregaMes);
+        
+        cadastrarDataEntregaAno = new JTextField(4);
+        cadastrarDataEntregaAno.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataEntrega.add(cadastrarDataEntregaAno);
+        
+        painelFuncoesEntrega.add(painelDataEntrega);
+        painelFuncoesEntrega.add(null1);
+        
+        clientes = new JList(usuario.getClientes().toArray());
+        clientes.setVisible(true);
+        clientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        //clientes.addListSelectionListener(new InfoListaCliente(this, aluno, 1));
+        
+        painelFuncoesEntrega.add(new JScrollPane(clientes));
+        painelFuncoesEntrega.add(null2);
+        
+        JPanel painelFuncoesProduto;
+        painelFuncoesProduto = new JPanel();
+        painelFuncoesProduto.setBackground(new Color(239,186,237));
+        painelFuncoesProduto.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        
+        painelFuncoes.add(painelFuncoesEntrega,BorderLayout.NORTH);
+        painelFuncoes.add(painelFuncoesProduto,BorderLayout.SOUTH);
         this.painelRegistraEncomenda.add(painelFuncoes,BorderLayout.CENTER);
+        
     }
     
     public void telaRegistraCliente()
@@ -597,6 +700,23 @@ public class Tela extends JFrame
     {
         return cadastrarValorIngrediente;
     }
+
+    public JTextField getCadastrarDataPedidoDia() 
+    {
+        return cadastrarDataPedidoDia;
+    }
+
+    public JTextField getCadastrarDataPedidoMes() 
+    {
+        return cadastrarDataPedidoMes;
+    }
+
+    public JTextField getCadastrarDataPedidoAno() 
+    {
+        return cadastrarDataPedidoAno;
+    }
+    
+    
     
     //set
     public void setSenha(JPasswordField senha)
@@ -633,6 +753,23 @@ public class Tela extends JFrame
     {
         this.cadastrarQuantidadeIngrediente = cadastrarQuantidadeIngrediente;
     }
+
+    public void setCadastrarDataPedidoDia(JTextField cadastrarDataPedidoDia) 
+    {
+        this.cadastrarDataPedidoDia = cadastrarDataPedidoDia;
+    }
+
+    public void setCadastrarDataPedidoMes(JTextField cadastrarDataPedidoMes) 
+    {
+        this.cadastrarDataPedidoMes = cadastrarDataPedidoMes;
+    }
+
+    public void setCadastrarDataPedidoAno(JTextField cadastrarDataPedidoAno) 
+    {
+        this.cadastrarDataPedidoAno = cadastrarDataPedidoAno;
+    }
+    
+    
     
     //visibilidade
     public void visibilidadeTelaUsuario()
