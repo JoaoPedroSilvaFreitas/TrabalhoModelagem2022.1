@@ -16,6 +16,21 @@ public class Doce extends Produto
     private float valor;
     private List<Ingrediente> ingredientes;
     
+    Doce(String sabor)
+    {
+        this.sabor = sabor;
+        this.valor = 0;
+    }
+    
+    public float calculaValor()
+    {   
+        for (Ingrediente ingrediente : ingredientes)
+        {
+            valor += ingrediente.getValor();
+        }
+        return valor;
+    }
+
     public void setSabor(String sabor)
     {
         this.sabor = sabor;
@@ -24,6 +39,16 @@ public class Doce extends Produto
     public String getSabor()
     {
         return this.sabor;
+    }
+    
+    public void setIngredientes(List<Ingrediente> ingredientes) 
+    {
+        this.ingredientes = ingredientes;
+    }
+    
+    public List<Ingrediente> getIngredientes() 
+    {
+        return ingredientes;
     }
     
 }

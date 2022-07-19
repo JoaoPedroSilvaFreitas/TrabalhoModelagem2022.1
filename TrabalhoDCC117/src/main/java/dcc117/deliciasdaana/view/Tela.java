@@ -46,6 +46,8 @@ public class Tela extends JFrame
     private JTextField cadastrarDataEntregaAno;
     
     private JList<Cliente> clientes;
+    private JList<Ingrediente> ingredientes;
+    private JList<Encomenda> encomendas;
     
     private ImageIcon imagemLogo = new ImageIcon("images/logo.jpg");
     private ImageIcon imagemSetaLogin = new ImageIcon("images/seta.jpg");
@@ -60,7 +62,17 @@ public class Tela extends JFrame
     
     Tela()
     {
+        DefaultListModel<Cliente> modelClientes = new DefaultListModel<>();
+        clientes = new JList<>(modelClientes);
         
+        DefaultListModel<Ingrediente> modelIngrediente = new DefaultListModel<>();
+        ingredientes = new JList<>(modelIngrediente);
+        
+        
+        DefaultListModel<Encomenda> modelEncomenda = new DefaultListModel<>();
+        encomendas = new JList<>(modelEncomenda);
+        
+        this.addWindowListener(new atualizaDados(this));
     }
     
     public void telaPrincipal()
@@ -180,12 +192,7 @@ public class Tela extends JFrame
         registrarEncomendaBtn.addActionListener(new registrarEncomenda(this));
         painelFuncoes.add(registrarEncomendaBtn);
         
-        /*
-        if(usuario.getClientes() == null || usuario.getClientes().isEmpty())
-        {
-            registrarEncomendaBtn.enable(false);
-        }*/
-        
+       
         JButton registrarIngredienteBtn;
         registrarIngredienteBtn = new JButton();
         registrarIngredienteBtn.setFont(new Font("Arial", Font.PLAIN, 26));
@@ -309,7 +316,13 @@ public class Tela extends JFrame
         painelDataPedido.add(cadastrarDataPedidoAno);
         
         painelFuncoesEntrega.add(painelDataPedido);
-        painelFuncoesEntrega.add(null0);
+        
+        clientes = new JList(usuario.getClientes().toArray());
+        clientes.setVisible(true);
+        clientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        //clientes.addListSelectionListener(new InfoListaCliente(this, aluno, 1));
+        
+        painelFuncoesEntrega.add(new JScrollPane(clientes));
         
         JPanel painelDataEntrega;
         painelDataEntrega = new JPanel();
@@ -334,13 +347,6 @@ public class Tela extends JFrame
         painelFuncoesEntrega.add(painelDataEntrega);
         painelFuncoesEntrega.add(null1);
         
-        clientes = new JList(usuario.getClientes().toArray());
-        clientes.setVisible(true);
-        clientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //clientes.addListSelectionListener(new InfoListaCliente(this, aluno, 1));
-        
-        painelFuncoesEntrega.add(new JScrollPane(clientes));
-        painelFuncoesEntrega.add(null2);
         
         JPanel painelFuncoesProduto;
         painelFuncoesProduto = new JPanel();
@@ -348,7 +354,7 @@ public class Tela extends JFrame
         painelFuncoesProduto.setLayout(new GridLayout(0,3));
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
         
-        
+              
         painelFuncoes.add(painelFuncoesEntrega,BorderLayout.NORTH);
         painelFuncoes.add(painelFuncoesProduto,BorderLayout.SOUTH);
         this.painelRegistraEncomenda.add(painelFuncoes,BorderLayout.CENTER);
@@ -715,6 +721,22 @@ public class Tela extends JFrame
     {
         return cadastrarDataPedidoAno;
     }
+
+    public JList<Cliente> getClientes() 
+    {
+        return clientes;
+    }
+
+    public JList<Ingrediente> getIngredientes() 
+    {
+        return ingredientes;
+    }
+
+    public JList<Encomenda> getEncomendas() 
+    {
+        return encomendas;
+    }
+    
     
     
     
