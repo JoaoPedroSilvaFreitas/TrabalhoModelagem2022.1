@@ -28,7 +28,7 @@ public class addProduto implements ActionListener
     {
         if(TelaId == 1)
         {
-            Doce doce = new Doce(tela.getCadastrarDoceSabor().getText(), tela.getCadastrarDoceInfo().getText(), Double.parseDouble(tela.getCadastrarDoceValor().getText()));
+            Doce doce = new Doce(tela.getCadastrarDoceSabor().getText(), tela.getCadastrarDoceInfo().getText(), Double.parseDouble(tela.getCadastrarDoceValor().getText()), Double.parseDouble(tela.getCadastrarDoceCusto().getText()));
             tela.getUsuario().addProduto(doce);
             JOptionPane.showMessageDialog(tela,"Doce adicionado");
             tela.repaint();
@@ -38,7 +38,7 @@ public class addProduto implements ActionListener
             {
                 if(TelaId == 2)
                 {
-                    Bolo bolo = new Bolo(tela.getCadastrarBoloSaborMassa().getText(),tela.getCadastrarBoloSaborRecheio().getText(),tela.getCadastrarBoloTamanho().getText(), tela.getCadastrarBoloInfo().getText(), Double.parseDouble(tela.getCadastrarBoloValor().getText()));
+                    Bolo bolo = new Bolo(tela.getCadastrarBoloSaborMassa().getText(),tela.getCadastrarBoloSaborRecheio().getText(),tela.getCadastrarBoloTamanho().getText(), tela.getCadastrarBoloInfo().getText(), Double.parseDouble(tela.getCadastrarBoloValor().getText()), Double.parseDouble(tela.getCadastrarBoloCusto().getText()));
                     tela.getUsuario().addProduto(bolo);
                     JOptionPane.showMessageDialog(tela,"Bolo adicionado");
                     tela.repaint();

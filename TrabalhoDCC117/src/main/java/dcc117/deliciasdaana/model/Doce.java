@@ -15,11 +15,12 @@ public class Doce extends Produto
     private String sabor;
     private List<Ingrediente> ingredientes;
     
-    public Doce(String sabor, String info, double valor)
+    public Doce(String sabor, String info, double valor, double custo)
     {
         this.sabor = sabor;
         this.info = info;
         this.valor = valor;
+        this.custo = custo;
     }
 
     public void setSabor(String sabor)

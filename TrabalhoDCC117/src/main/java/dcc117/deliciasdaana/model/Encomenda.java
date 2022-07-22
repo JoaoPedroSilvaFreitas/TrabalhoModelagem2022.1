@@ -103,4 +103,11 @@ public class Encomenda
     {
         this.info = info;
     }
+    
+    //toString
+    @Override
+    public String toString()
+    {
+        return this.cliente.getNome() + ":  " + this.dataDoPedido + "  " + "   " + this.dataDeEntrega;
+    }
 }

@@ -17,12 +17,13 @@ public class Bolo extends Produto
     private String tamanho;
     private List<Ingrediente> ingredientes;
    
-    public Bolo(String saborMassa, String saborRecheio, String tamanho, String info, double valor)
+    public Bolo(String saborMassa, String saborRecheio, String tamanho, String info, double valor, double custo)
     {
         this.saborMassa = saborMassa;
         this.saborRecheio = saborRecheio;
         this.tamanho = tamanho;
         this.valor = valor;
+        this.custo = custo;
         this.info = info;
     }
     

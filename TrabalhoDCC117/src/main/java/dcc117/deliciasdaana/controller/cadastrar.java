@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import dcc117.deliciasdaana.view.*;
 import dcc117.deliciasdaana.model.*;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,8 +39,23 @@ public class cadastrar implements ActionListener
             {
                 if(TelaId == 2)
                 {
-                    //Encomenda encomenda = new Encomenda();
-                    //Login.usuario.addEncomenda();
+                    int idCliente = tela.getClientes().getSelectedIndex();
+                    
+                    if(idCliente == -1) 
+                    {
+                        JOptionPane.showMessageDialog(tela, "ERRO:Selecione um cliente");
+                    }else
+                        {
+                            DefaultListModel<Cliente> modelClientes = (DefaultListModel<Cliente>) tela.getClientes().getModel();
+                            Data dataPedido = new Data(Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()), Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()), Integer.parseInt(tela.getCadastrarDataPedidoAno().getText()));
+                            Data dataEntrega = new Data(Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()), Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()), Integer.parseInt(tela.getCadastrarDataEntregaAno().getText()));
+                            Encomenda encomenda = new Encomenda(modelClientes.getElementAt(idCliente), dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
+                            
+                            
+                            tela.getUsuario().addEncomenda(encomenda);
+                            JOptionPane.showMessageDialog(tela,"Encomenda registrada");
+                            tela.repaint();
+                        }
                 }else
                     {
                         if(TelaId == 3)

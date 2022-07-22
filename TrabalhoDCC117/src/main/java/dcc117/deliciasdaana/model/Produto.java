@@ -11,6 +11,7 @@ package dcc117.deliciasdaana.model;
 public abstract class Produto 
 {
     protected double valor;
+    protected double custo;
     protected int quantidade;
     protected String info;
     
@@ -27,6 +28,16 @@ public abstract class Produto
     public String getInfo() 
     {
         return info;
+    }
+
+    public double getCusto() 
+    {
+        return custo;
+    }
+
+    public void setCusto(double custo) 
+    {
+        this.custo = custo;
     }
     
     public void setValor(double valor)
