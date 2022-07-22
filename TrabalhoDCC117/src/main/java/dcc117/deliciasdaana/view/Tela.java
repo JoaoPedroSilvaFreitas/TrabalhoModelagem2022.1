@@ -24,6 +24,9 @@ public class Tela extends JFrame
     private JPanel painelUsuario;
     private JPanel painelRegistraEncomenda;
     private JPanel painelRegistraCliente;
+    
+    private JPanel painelRegistraProduto;
+    
     private JPanel painelRegistraIngrediente;
     private JPanel painelConsultaGastoLucro;
     private JPanel painelRelatorio;
@@ -45,19 +48,31 @@ public class Tela extends JFrame
     private JTextField cadastrarDataEntregaMes;
     private JTextField cadastrarDataEntregaAno;
     
+    private JTextField cadastrarBoloTamanho;
+    private JTextField cadastrarBoloSaborMassa;
+    private JTextField cadastrarBoloSaborRecheio;
+    private JTextField cadastrarBoloInfo;
+    private JTextField cadastrarBoloValor;
+    private JTextField cadastrarDoceSabor;
+    private JTextField cadastrarDoceInfo;
+    private JTextField cadastrarDoceValor;
+    
     private JList<Cliente> clientes;
     private JList<Ingrediente> ingredientes;
     private JList<Encomenda> encomendas;
+    
+    private JList<Produto> produtos;
     
     private ImageIcon imagemLogo = new ImageIcon("images/logo.jpg");
     private ImageIcon imagemSetaLogin = new ImageIcon("images/seta.jpg");
     private ImageIcon imagemSetaSair = new ImageIcon("images/sair.jpg");
     private ImageIcon imagemRegistraEncomenda = new ImageIcon("images/botaoEncomenda.jpg");
     private ImageIcon imagemRegistraCliente = new ImageIcon("images/botaoCliente.jpg");
-    private ImageIcon imagemRegistraIngrediente = new ImageIcon("images/botaoIngrediente.jpg");
+    private ImageIcon imagemRegistraProduto = new ImageIcon("images/botaoProduto.jpg");
     private ImageIcon imagemGastoLucro = new ImageIcon("images/botaoGastoLucro.jpg");
     private ImageIcon imagemCalendario = new ImageIcon("images/botaoCalendario.jpg");
     private ImageIcon imagemRelatorio = new ImageIcon("images/botaoRelatorio.jpg");
+    private ImageIcon imagemRegistra = new ImageIcon("images/botaoRegistrar.jpg");
     
     
     Tela()
@@ -192,7 +207,7 @@ public class Tela extends JFrame
         registrarEncomendaBtn.addActionListener(new registrarEncomenda(this));
         painelFuncoes.add(registrarEncomendaBtn);
         
-       
+       /*
         JButton registrarIngredienteBtn;
         registrarIngredienteBtn = new JButton();
         registrarIngredienteBtn.setFont(new Font("Arial", Font.PLAIN, 26));
@@ -201,6 +216,17 @@ public class Tela extends JFrame
         registrarIngredienteBtn.setIcon(imagemRegistraIngrediente);
         registrarIngredienteBtn.addActionListener(new registrarIngrediente(this));
         painelFuncoes.add(registrarIngredienteBtn);
+        */
+        
+        JButton registrarProdutoBtn;
+        registrarProdutoBtn = new JButton("", imagemRegistraProduto);
+        registrarProdutoBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        registrarProdutoBtn.setBackground(new Color(239,186,237));
+        registrarProdutoBtn.setBorderPainted(false);
+        //registrarIngredienteBtn.setIcon(imagemRegistraProduto);
+        registrarProdutoBtn.addActionListener(new registrarProduto(this));
+        painelFuncoes.add(registrarProdutoBtn);
+        
         
         JButton consultarGastoLucroBtn;
         consultarGastoLucroBtn = new JButton();
@@ -231,6 +257,166 @@ public class Tela extends JFrame
         
         
         this.painelUsuario.add(painelFuncoes, BorderLayout.CENTER);
+    }
+    
+    
+    public void telaRegistraProduto()
+    {
+        visibilidadeTelaUsuario();
+        //this.setSize(1280,720);
+        this.setVisible(true);
+        
+        this.painelRegistraProduto = new JPanel();
+        this.painelRegistraProduto.setLayout(new BorderLayout());
+        this.painelRegistraProduto.setBackground(new Color(239,186,237));
+        
+        telaRegistraProdutoAux();
+        
+        this.add(this.painelRegistraProduto);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.repaint();
+    }
+    
+    private void telaRegistraProdutoAux()
+    {
+        JLabel null0 = new JLabel();
+        JLabel null1 = new JLabel();
+        JLabel null2 = new JLabel();
+        JLabel null3 = new JLabel();
+        JLabel null4 = new JLabel();
+        JLabel null5 = new JLabel();
+        JLabel null6 = new JLabel();
+        JLabel null7 = new JLabel();
+        JLabel null8 = new JLabel();
+        JLabel null9 = new JLabel();
+        JLabel null10 = new JLabel();
+        JLabel null11 = new JLabel();
+        JLabel null12 = new JLabel();
+        
+        JButton sairBtn;
+        sairBtn = new JButton("",imagemSetaSair);
+        //sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        sairBtn.setBackground(new Color(106,64,24));
+        sairBtn.setBorderPainted(false);
+        sairBtn.addActionListener(new Sair(this,4));
+        this.painelRegistraProduto.add(sairBtn,BorderLayout.WEST);
+        
+        JButton cadastrarBtn;
+        cadastrarBtn = new JButton("",imagemRegistra);
+        //cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        cadastrarBtn.setBackground(new Color(106,64,24));
+        cadastrarBtn.setBorderPainted(false);
+        //cadastrarBtn.addActionListener(new cadastrar(this,2));
+        this.painelRegistraProduto.add(cadastrarBtn,BorderLayout.EAST);
+        
+        JPanel painelFuncoes;
+        painelFuncoes = new JPanel();
+        painelFuncoes.setBackground(new Color(239,186,237));
+        painelFuncoes.setLayout(new BorderLayout());
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JPanel painelBolo;
+        painelBolo = new JPanel();
+        painelBolo.setBackground(new Color(239,186,237));
+        painelBolo.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JLabel tamanho = new JLabel("Tamanho:", SwingConstants.CENTER);
+        tamanho.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelBolo.add(tamanho);
+        cadastrarBoloTamanho = new JTextField(50);
+        cadastrarBoloTamanho.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelBolo.add(cadastrarBoloTamanho);
+        painelBolo.add(null0);
+        
+        JLabel massa = new JLabel("Massa:", SwingConstants.CENTER);
+        massa.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelBolo.add(massa);
+        cadastrarBoloSaborMassa = new JTextField(50);
+        cadastrarBoloSaborMassa.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelBolo.add(cadastrarBoloSaborMassa);
+        painelBolo.add(null1);
+        
+        JLabel recheio = new JLabel("Recheio:", SwingConstants.CENTER);
+        recheio.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelBolo.add(recheio);
+        cadastrarBoloSaborRecheio = new JTextField(50);
+        cadastrarBoloSaborRecheio.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelBolo.add(cadastrarBoloSaborRecheio);
+        painelBolo.add(null2);
+        
+        JLabel infoBolo = new JLabel("Info:", SwingConstants.CENTER);
+        infoBolo.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelBolo.add(infoBolo);
+        cadastrarBoloInfo = new JTextField(200);
+        cadastrarBoloInfo.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelBolo.add(cadastrarBoloInfo);
+        painelBolo.add(null3);
+        
+        JLabel valorBolo = new JLabel("Valor:", SwingConstants.CENTER);
+        infoBolo.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelBolo.add(valorBolo);
+        cadastrarBoloValor = new JTextField(200);
+        cadastrarBoloValor.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelBolo.add(cadastrarBoloValor);
+        painelBolo.add(null4);
+        painelBolo.add(null5);
+        
+        JButton addBoloBtn;
+        addBoloBtn = new JButton("Adicionar bolo");
+        addBoloBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        addBoloBtn.setBackground(new Color(106,64,24));
+        addBoloBtn.setBorderPainted(false);
+        addBoloBtn.addActionListener(new addProduto(this,2));
+        
+        painelBolo.add(addBoloBtn);
+        
+        JPanel painelDoce;
+        painelDoce = new JPanel();
+        painelDoce.setBackground(new Color(239,186,237));
+        painelDoce.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JLabel sabor = new JLabel("Sabor:", SwingConstants.CENTER);
+        sabor.setFont(new Font("Arial", Font.PLAIN, 20));
+        cadastrarDoceSabor = new JTextField(50);
+        cadastrarDoceSabor.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDoce.add(sabor);
+        painelDoce.add(cadastrarDoceSabor);
+        painelDoce.add(null6);
+        
+        JLabel infoDoce = new JLabel("Info:", SwingConstants.CENTER);
+        infoDoce.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDoce.add(infoDoce);
+        cadastrarDoceInfo = new JTextField(200);
+        cadastrarDoceInfo.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDoce.add(cadastrarDoceInfo);
+        painelDoce.add(null7);
+        
+        JLabel valorDoce = new JLabel("Valor:", SwingConstants.CENTER);
+        infoBolo.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDoce.add(valorDoce);
+        cadastrarDoceValor = new JTextField(200);
+        cadastrarDoceValor.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDoce.add(cadastrarDoceValor);
+        painelDoce.add(null8);
+        painelDoce.add(null9);
+        
+        
+        JButton addDoceBtn;
+        addDoceBtn = new JButton("Adicionar Doce");
+        addDoceBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        addDoceBtn.setBackground(new Color(106,64,24));
+        addDoceBtn.setBorderPainted(false);
+        addDoceBtn.addActionListener(new addProduto(this,1));
+        
+        painelDoce.add(addDoceBtn);
+        
+        
+        painelFuncoes.add(painelBolo,BorderLayout.NORTH);
+        painelFuncoes.add(painelDoce,BorderLayout.SOUTH);
+        
+        this.painelRegistraProduto.add(painelFuncoes,BorderLayout.CENTER);
     }
     
     public void telaRegistraEncomenda()
@@ -268,18 +454,18 @@ public class Tela extends JFrame
         
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
-        sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        //sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
         sairBtn.setBackground(new Color(106,64,24));
         sairBtn.setBorderPainted(false);
         sairBtn.addActionListener(new Sair(this,3));
         this.painelRegistraEncomenda.add(sairBtn,BorderLayout.WEST);
         
         JButton cadastrarBtn;
-        cadastrarBtn = new JButton("",imagemSetaLogin);
-        cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        cadastrarBtn = new JButton("",imagemRegistra);
+        //cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
         cadastrarBtn.setBackground(new Color(106,64,24));
         cadastrarBtn.setBorderPainted(false);
-        cadastrarBtn.addActionListener(new cadastrar(this,1));
+        cadastrarBtn.addActionListener(new cadastrar(this,2));
         this.painelRegistraEncomenda.add(cadastrarBtn,BorderLayout.EAST);
         
         
@@ -322,13 +508,18 @@ public class Tela extends JFrame
         clientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         //clientes.addListSelectionListener(new InfoListaCliente(this, aluno, 1));
         
-        painelFuncoesEntrega.add(new JScrollPane(clientes));
+        produtos = new JList(usuario.getProdutos().toArray());
+        produtos.setVisible(true);
+        produtos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        //clientes.addListSelectionListener(new InfoListaCliente(this, aluno, 1));
+        
+        
         
         JPanel painelDataEntrega;
         painelDataEntrega = new JPanel();
         painelDataEntrega.setBackground(new Color(239,186,237));
         painelDataEntrega.setLayout(new GridLayout(0,4));
-        
+             
         JLabel DataEntrega = new JLabel("Entrega:", SwingConstants.CENTER);
         DataEntrega.setFont(new Font("Arial", Font.PLAIN, 19));
         painelDataEntrega.add(DataEntrega);
@@ -345,7 +536,9 @@ public class Tela extends JFrame
         painelDataEntrega.add(cadastrarDataEntregaAno);
         
         painelFuncoesEntrega.add(painelDataEntrega);
-        painelFuncoesEntrega.add(null1);
+        
+        painelFuncoesEntrega.add(new JScrollPane(clientes));
+        painelFuncoesEntrega.add(new JScrollPane(produtos));
         
         
         JPanel painelFuncoesProduto;
@@ -354,9 +547,82 @@ public class Tela extends JFrame
         painelFuncoesProduto.setLayout(new GridLayout(0,3));
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
         
-              
+        /*
+        JButton boloBtn;
+        boloBtn = new JButton("Bolo");
+        boloBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        boloBtn.setBackground(new Color(106,64,24));
+        boloBtn.setBorderPainted(false);
+        //boloBtn.addActionListener(new boloOuDoce(this,1));
+        painelFuncoesProduto.add(boloBtn);
+        
+        painelFuncoesProduto.add(null0);
+        
+        JButton doceBtn;
+        doceBtn = new JButton("Doce");
+        doceBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        doceBtn.setBackground(new Color(106,64,24));
+        doceBtn.setBorderPainted(false);
+        //doceBtn.addActionListener(new boloOuDoce(this,1));
+        painelFuncoesProduto.add(doceBtn);
+        */
+        
+        /*
+        JLabel tamanho = new JLabel("Tamanho:", SwingConstants.CENTER);
+        tamanho.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelFuncoesProduto.add(tamanho);
+        cadastrarBoloTamanho = new JTextField(50);
+        cadastrarBoloTamanho.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoesProduto.add(cadastrarBoloTamanho);
+        painelFuncoesProduto.add(null1);
+        
+        JLabel massa = new JLabel("Massa:", SwingConstants.CENTER);
+        massa.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelFuncoesProduto.add(massa);
+        cadastrarBoloSaborMassa = new JTextField(50);
+        cadastrarBoloSaborMassa.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoesProduto.add(cadastrarBoloSaborMassa);
+        painelFuncoesProduto.add(null2);
+        
+        JLabel recheio = new JLabel("Recheio:", SwingConstants.CENTER);
+        recheio.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelFuncoesProduto.add(recheio);
+        cadastrarBoloSaborRecheio = new JTextField(50);
+        cadastrarBoloSaborRecheio.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoesProduto.add(cadastrarBoloSaborRecheio);
+        painelFuncoesProduto.add(null3);
+        
+        JLabel sabor = new JLabel("Sabor:", SwingConstants.CENTER);
+        sabor.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelFuncoesProduto.add(sabor);
+        cadastrarDoceSabor = new JTextField(50);
+        cadastrarDoceSabor.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoesProduto.add(cadastrarDoceSabor);
+        painelFuncoesProduto.add(null4);
+        
+        
+        JButton addDoceBtn;
+        addDoceBtn = new JButton("Adicionar Doce");
+        addDoceBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        addDoceBtn.setBackground(new Color(106,64,24));
+        addDoceBtn.setBorderPainted(false);
+        addDoceBtn.addActionListener(new addProduto(this,1));
+        
+        JButton addBoloBtn;
+        addBoloBtn = new JButton("Adicionar bolo");
+        addBoloBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        addBoloBtn.setBackground(new Color(106,64,24));
+        addBoloBtn.setBorderPainted(false);
+        addBoloBtn.addActionListener(new addProduto(this,2));
+        
+        
+        painelFuncoesProduto.add(addDoceBtn);
+        painelFuncoesProduto.add(null5);
+        painelFuncoesProduto.add(addBoloBtn);
+        */
+        
         painelFuncoes.add(painelFuncoesEntrega,BorderLayout.NORTH);
-        painelFuncoes.add(painelFuncoesProduto,BorderLayout.SOUTH);
+        //painelFuncoes.add(painelFuncoesProduto,BorderLayout.SOUTH);
         this.painelRegistraEncomenda.add(painelFuncoes,BorderLayout.CENTER);
         
     }
@@ -403,7 +669,7 @@ public class Tela extends JFrame
         this.painelRegistraCliente.add(sairBtn,BorderLayout.WEST);
         
         JButton cadastrarBtn;
-        cadastrarBtn = new JButton("",imagemSetaLogin);
+        cadastrarBtn = new JButton("",imagemRegistra);
         cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
         cadastrarBtn.setBackground(new Color(106,64,24));
         cadastrarBtn.setBorderPainted(false);
@@ -499,7 +765,7 @@ public class Tela extends JFrame
         this.painelRegistraIngrediente.add(sairBtn,BorderLayout.WEST);
         
         JButton cadastrarBtn;
-        cadastrarBtn = new JButton("",imagemSetaLogin);
+        cadastrarBtn = new JButton("",imagemRegistra);
         cadastrarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
         cadastrarBtn.setBackground(new Color(106,64,24));
         cadastrarBtn.setBorderPainted(false);
@@ -736,14 +1002,121 @@ public class Tela extends JFrame
     {
         return encomendas;
     }
-    
-    
-    
+
+    public JTextField getCadastrarDataEntregaDia() 
+    {
+        return cadastrarDataEntregaDia;
+    }
+
+    public JTextField getCadastrarDataEntregaMes() 
+    {
+        return cadastrarDataEntregaMes;
+    }
+
+    public JTextField getCadastrarDataEntregaAno() 
+    {
+        return cadastrarDataEntregaAno;
+    }
+
+    public JTextField getCadastrarBoloTamanho() 
+    {
+        return cadastrarBoloTamanho;
+    }
+
+    public JTextField getCadastrarBoloSaborMassa() 
+    {
+        return cadastrarBoloSaborMassa;
+    }
+
+    public JTextField getCadastrarBoloSaborRecheio() 
+    {
+        return cadastrarBoloSaborRecheio;
+    }
+
+    public JTextField getCadastrarDoceSabor() 
+    {
+        return cadastrarDoceSabor;
+    }
+
+    public JTextField getCadastrarBoloInfo() 
+    {
+        return cadastrarBoloInfo;
+    }
+
+    public JTextField getCadastrarDoceInfo() 
+    {
+        return cadastrarDoceInfo;
+    }
+
+    public JTextField getCadastrarBoloValor() 
+    {
+        return cadastrarBoloValor;
+    }
+
+    public JTextField getCadastrarDoceValor() 
+    {
+        return cadastrarDoceValor;
+    }
     
     //set
     public void setSenha(JPasswordField senha)
     {
         this.senha = senha;
+    }
+
+    public void setCadastrarDataEntregaDia(JTextField cadastrarDataEntregaDia) 
+    {
+        this.cadastrarDataEntregaDia = cadastrarDataEntregaDia;
+    }
+
+    public void setCadastrarDataEntregaMes(JTextField cadastrarDataEntregaMes) 
+    {
+        this.cadastrarDataEntregaMes = cadastrarDataEntregaMes;
+    }
+
+    public void setCadastrarDataEntregaAno(JTextField cadastrarDataEntregaAno) 
+    {
+        this.cadastrarDataEntregaAno = cadastrarDataEntregaAno;
+    }
+
+    public void setCadastrarBoloTamanho(JTextField cadastrarBoloTamanho) 
+    {
+        this.cadastrarBoloTamanho = cadastrarBoloTamanho;
+    }
+
+    public void setCadastrarBoloSaborMassa(JTextField cadastrarBoloSaborMassa) 
+    {
+        this.cadastrarBoloSaborMassa = cadastrarBoloSaborMassa;
+    }
+
+    public void setCadastrarBoloSaborRecheio(JTextField cadastrarBoloSaborRecheio) 
+    {
+        this.cadastrarBoloSaborRecheio = cadastrarBoloSaborRecheio;
+    }
+
+    public void setCadastrarDoceSabor(JTextField cadastrarDoceSabor) 
+    {
+        this.cadastrarDoceSabor = cadastrarDoceSabor;
+    }
+
+    public void setCadastrarBoloInfo(JTextField cadastrarBoloInfo) 
+    {
+        this.cadastrarBoloInfo = cadastrarBoloInfo;
+    }
+
+    public void setCadastrarDoceInfo(JTextField cadastrarDoceInfo) 
+    {
+        this.cadastrarDoceInfo = cadastrarDoceInfo;
+    }
+
+    public void setCadastrarBoloValor(JTextField cadastrarBoloValor) 
+    {
+        this.cadastrarBoloValor = cadastrarBoloValor;
+    }
+
+    public void setCadastrarDoceValor(JTextField cadastrarDoceValor) 
+    {
+        this.cadastrarDoceValor = cadastrarDoceValor;
     }
     
     public void setCadastrarNomeCliente(JTextField cadastrarNomeCliente) 
@@ -802,6 +1175,11 @@ public class Tela extends JFrame
     public void visibilidadeTelaRegistraEncomenda()
     {
         this.painelRegistraEncomenda.setVisible(false);
+    }
+    
+    public void visibilidadeTelaRegistraProduto()
+    {
+        this.painelRegistraProduto.setVisible(false);
     }
     
     public void visibilidadeTelaRegistraCliente()

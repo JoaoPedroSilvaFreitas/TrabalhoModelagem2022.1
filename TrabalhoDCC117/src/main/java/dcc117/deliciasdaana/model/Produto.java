@@ -12,15 +12,21 @@ public abstract class Produto
 {
     protected double valor;
     protected int quantidade;
+    protected String info;
     
     public double getValor()
     {
-        return this.valor;
+        return valor;
     }
     
     public int getQuantidade()
     {
-        return this.quantidade;
+        return quantidade;
+    }
+    
+    public String getInfo() 
+    {
+        return info;
     }
     
     public void setValor(double valor)
@@ -32,5 +38,9 @@ public abstract class Produto
     {
         this.quantidade = quantidade;
     }
-    
+
+    public void setInfo(String info) 
+    {
+        this.info = info;
+    }
 }

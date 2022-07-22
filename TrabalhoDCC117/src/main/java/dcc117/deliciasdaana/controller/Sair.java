@@ -46,7 +46,8 @@ public class Sair implements ActionListener
                             {
                                 if(TelaId == 4)
                                 {
-                                    tela.visibilidadeTelaRegistraIngrediente();
+                                    //tela.visibilidadeTelaRegistraIngrediente();
+                                    tela.visibilidadeTelaRegistraProduto();
                                     tela.telaUsuario(tela.getUsuario());
                                 }else
                                     {

@@ -14,25 +14,16 @@ public class Bolo extends Produto
 {
     private String saborMassa;
     private String saborRecheio;
-    private int tamanho; // 1 pequeno 2 medio 3 grande
-    private float valor;
+    private String tamanho;
     private List<Ingrediente> ingredientes;
    
-    Bolo(String saborMassa, String saborRecheio, int tamanho)
+    public Bolo(String saborMassa, String saborRecheio, String tamanho, String info, double valor)
     {
         this.saborMassa = saborMassa;
         this.saborRecheio = saborRecheio;
         this.tamanho = tamanho;
-        this.valor = 0;
-    }
-    
-    public float calculaValor()
-    {   
-        for (Ingrediente ingrediente : ingredientes)
-        {
-            valor += ingrediente.getValor();
-        }
-        return valor;
+        this.valor = valor;
+        this.info = info;
     }
     
     public void setSaborMassa(String saborMassa)
@@ -40,7 +31,7 @@ public class Bolo extends Produto
         this.saborMassa = saborMassa;
     }
     
-    public void setTamanho(int tamanho)
+    public void setTamanho(String tamanho)
     {
         this.tamanho = tamanho;
     }
@@ -60,9 +51,21 @@ public class Bolo extends Produto
         return this.saborRecheio;
     }
     
-    public int getTamanho()
+    public String getTamanho()
     {
         return this.tamanho;
     }
 
+
+    
+    
+    
+
+    //toString
+    @Override
+    public String toString()
+    {
+        return "Bolo " + this.tamanho + ":  " + this.saborMassa + "  " + "   " + this.saborRecheio + "   R$" + this.valor + "    " + this.info;
+    }
+    
 }

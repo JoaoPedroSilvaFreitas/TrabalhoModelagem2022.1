@@ -29,6 +29,11 @@ public class Encomenda
         this.info = info;
     }
     
+    public void addProduto(Produto produto)
+    {
+        produtos.add(produto);
+    }
+    
     public int getId()
     {
         return this.id;

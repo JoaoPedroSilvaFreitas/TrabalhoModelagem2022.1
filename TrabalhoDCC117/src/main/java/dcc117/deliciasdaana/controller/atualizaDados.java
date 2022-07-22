@@ -69,6 +69,8 @@ public class atualizaDados implements WindowListener
                 modelEncomendas.addElement(encomenda);
             }
             
+            //PROVAVELMENTE TEREI QUE ALTERAR ISSO AQUI PARA ADICIONAR NO USUARIO
+            
             tela.getClientes().setModel(modelClientes);
             tela.getIngredientes().setModel(modelIngredientes);
             tela.getEncomendas().setModel(modelEncomendas);
@@ -84,6 +86,7 @@ public class atualizaDados implements WindowListener
     @Override
     public void windowClosing(WindowEvent e)
     {
+        //PROVAVELMENTE TEREI QUE ALTERAR ISSO AQUI PARA LER DO USUARIO
         try 
         {
             ListModel<Cliente> modelCliente = tela.getClientes().getModel();

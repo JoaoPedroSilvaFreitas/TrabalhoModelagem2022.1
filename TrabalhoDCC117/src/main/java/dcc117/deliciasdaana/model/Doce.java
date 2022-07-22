@@ -13,22 +13,13 @@ import java.util.*;
 public class Doce extends Produto
 {
     private String sabor;
-    private float valor;
     private List<Ingrediente> ingredientes;
     
-    Doce(String sabor)
+    public Doce(String sabor, String info, double valor)
     {
         this.sabor = sabor;
-        this.valor = 0;
-    }
-    
-    public float calculaValor()
-    {   
-        for (Ingrediente ingrediente : ingredientes)
-        {
-            valor += ingrediente.getValor();
-        }
-        return valor;
+        this.info = info;
+        this.valor = valor;
     }
 
     public void setSabor(String sabor)
@@ -49,6 +40,13 @@ public class Doce extends Produto
     public List<Ingrediente> getIngredientes() 
     {
         return ingredientes;
+    }
+    
+    //toString
+    @Override
+    public String toString()
+    {
+        return "Doce:   " + this.sabor + "  " + "   " + this.valor + "   R$" + this.info;
     }
     
 }
