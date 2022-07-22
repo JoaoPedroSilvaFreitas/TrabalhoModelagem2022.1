@@ -47,6 +47,20 @@ public class JSON
         return ingrediente;
     }
     
+    public static String produtoToJSON(Produto produto)
+    {
+        Gson gson = new Gson();
+        String json = gson.toJson(produto);
+        return json;
+    }
+    
+    public static Produto JSONtoProduto(String json)
+    {
+        Gson gson = new Gson();
+        Produto produto = gson.fromJson(json, Produto.class);
+        return produto;
+    }
+    
     public static String encomendaToJSON(Encomenda encomenda)
     {
         Gson gson = new Gson();
@@ -76,6 +90,13 @@ public class JSON
         return json;
     }
     
+    public static String produtosToJSON(List<Produto> produtos)
+    {
+        Gson gson = new Gson();
+        String json = gson.toJson(produtos);
+        return json;
+    }
+    
     public static String encomendasToJSON(List<Encomenda> encomendas)
     {
         Gson gson = new Gson();
@@ -97,6 +118,14 @@ public class JSON
         Type ingredientesTipo = new TypeToken<ArrayList<Ingrediente>>(){}.getType();
         List<Ingrediente> ingredientes = gson.fromJson(json, ingredientesTipo);
         return ingredientes;
+    }
+    
+    public static List<Produto> toProdutos(String json)
+    {
+        Gson gson = new Gson();
+        Type produtosTipo = new TypeToken<ArrayList<Produto>>(){}.getType();
+        List<Produto> produtos = gson.fromJson(json, produtosTipo);
+        return produtos;
     }
     
     public static List<Encomenda> toEncomendas(String json)
