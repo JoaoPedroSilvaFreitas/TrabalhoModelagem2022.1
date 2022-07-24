@@ -13,6 +13,8 @@ import dcc117.deliciasdaana.model.*;
 import javax.swing.*;
 import java.awt.*;
 import dcc117.deliciasdaana.controller.*;
+import dcc117.deliciasdaana.controller.util.*;
+import java.io.FileNotFoundException;
 
 public class Tela extends JFrame
 {
@@ -78,9 +80,11 @@ public class Tela extends JFrame
     private final ImageIcon imagemRelatorio = new ImageIcon("images/botaoRelatorio.jpg");
     private final ImageIcon imagemRegistra = new ImageIcon("images/botaoRegistrar.jpg");
     
-    
+ 
     Tela()
     {
+        this.usuario = new Usuario();
+        
         DefaultListModel<Cliente> modelClientes = new DefaultListModel<>();
         clientes = new JList<>(modelClientes);
         
@@ -525,17 +529,17 @@ public class Tela extends JFrame
         cadastrarDataPedidoAno.setFont(new Font("Arial", Font.PLAIN, 50));
         painelDataPedido.add(cadastrarDataPedidoAno);
         
-        painelFuncoesEntrega.add(painelDataPedido);
+        
         
         clientes = new JList(usuario.getClientes().toArray());
         clientes.setVisible(true);
         clientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //clientes.addListSelectionListener(new InfoListaCliente(this, aluno, 1));
+        //clientes.addListSelectionListener(new InfoListaCliente(this));
         
         produtos = new JList(usuario.getProdutos().toArray());
         produtos.setVisible(true);
         produtos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        //clientes.addListSelectionListener(new InfoListaCliente(this, aluno, 1));
+        //clientes.addListSelectionListener(new InfoListaCliente(this));
 
         JPanel painelDataEntrega;
         painelDataEntrega = new JPanel();
@@ -558,6 +562,15 @@ public class Tela extends JFrame
         painelDataEntrega.add(cadastrarDataEntregaAno);
         
         painelFuncoesEntrega.add(painelDataEntrega);
+        painelFuncoesEntrega.add(painelDataPedido);
+        
+        JLabel info = new JLabel("Info:", SwingConstants.CENTER);
+        info.setFont(new Font("Arial", Font.PLAIN, 20));
+        cadastrarEncomendaInfo = new JTextField(200);
+        cadastrarEncomendaInfo.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelFuncoesEntrega.add(info);
+        painelFuncoesEntrega.add(cadastrarEncomendaInfo);
+        
         
         //painelFuncoesEntrega.add(new JScrollPane(clientes));
         //painelFuncoesEntrega.add(new JScrollPane(produtos));
@@ -829,6 +842,9 @@ public class Tela extends JFrame
         painelFuncoes.setLayout(new BorderLayout());
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
         
+        encomendas = new JList(usuario.getEncomendas().toArray());
+        encomendas.setVisible(true);
+        encomendas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         painelFuncoes.add(new JScrollPane(encomendas),BorderLayout.EAST);
         
         JPanel painelInfo;

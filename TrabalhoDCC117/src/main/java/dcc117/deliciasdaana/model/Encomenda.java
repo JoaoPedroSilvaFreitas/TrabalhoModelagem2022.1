@@ -26,8 +26,20 @@ public class Encomenda
         this.cliente = cliente;
         this.dataDeEntrega = dataDeEntrega;
         this.dataDoPedido = dataDoPedido;
+        this.valorTotal = 0;
+        this.gastoTotal = 0;
         this.info = info;
     }
+    
+    private void calculaValorGasto()
+    {
+        for(Produto produto : produtos)
+        {
+            this.valorTotal += produto.getValor();
+            this.gastoTotal += produto.getCusto();
+        }
+    }
+    
     
     public void addProduto(Produto produto)
     {

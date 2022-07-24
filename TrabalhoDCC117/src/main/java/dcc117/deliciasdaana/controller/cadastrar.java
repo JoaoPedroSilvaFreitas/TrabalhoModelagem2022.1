@@ -46,10 +46,13 @@ public class cadastrar implements ActionListener
                         JOptionPane.showMessageDialog(tela, "ERRO:Selecione um cliente");
                     }else
                         {
-                            DefaultListModel<Cliente> modelClientes = (DefaultListModel<Cliente>) tela.getClientes().getModel();
+                            //DefaultListModel<Cliente> modelClientes = (DefaultListModel<Cliente>) tela.getClientes().getModel();
+                            Cliente cliente = tela.getUsuario().getClientes().get(idCliente);//modelClientes.getElementAt(idCliente);
+                            
+                            
                             Data dataPedido = new Data(Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()), Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()), Integer.parseInt(tela.getCadastrarDataPedidoAno().getText()));
                             Data dataEntrega = new Data(Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()), Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()), Integer.parseInt(tela.getCadastrarDataEntregaAno().getText()));
-                            Encomenda encomenda = new Encomenda(modelClientes.getElementAt(idCliente), dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
+                            Encomenda encomenda = new Encomenda(cliente/*modelClientes.getElementAt(idCliente)*/, dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
                             
                             
                             tela.getUsuario().addEncomenda(encomenda);

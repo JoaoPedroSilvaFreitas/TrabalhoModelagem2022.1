@@ -28,6 +28,7 @@ public class atualizaDados implements WindowListener
 {
     private static final String CAMINHOclientes = "dadosClientes.json";
     private static final String CAMINHOingredientes = "dadosIngredientes.json";
+    private static final String CAMINHOprodutos = "dadosProdutos.json";
     private static final String CAMINHOencomendas = "dadosEncomendas.json";
     private Tela tela;
 
@@ -39,8 +40,37 @@ public class atualizaDados implements WindowListener
     @Override
     public void windowOpened(WindowEvent e) 
     {
+
         try 
         {
+            String clientes = Arquivo.lerArquivo(CAMINHOclientes);
+            List<Cliente> Clientes = JSON.toClientes(clientes);
+            
+            String produtos = Arquivo.lerArquivo(CAMINHOprodutos);
+            List<Produto> Produtos = JSON.toProdutos(produtos);
+            
+            String encomendas = Arquivo.lerArquivo(CAMINHOencomendas);
+            List<Encomenda> Encomendas = JSON.toEncomendas(encomendas);
+            
+            for (Cliente cliente : Clientes) 
+            {
+                tela.getUsuario().addCliente(cliente);
+            }
+            
+            for (Produto produto : Produtos) 
+            {
+                tela.getUsuario().addProduto(produto);
+            }
+            
+            for (Encomenda encomenda : Encomendas) 
+            {
+                tela.getUsuario().addEncomenda(encomenda);
+            }
+            
+            tela.repaint();
+            
+            
+            /*
             String clientes = Arquivo.lerArquivo(CAMINHOclientes);
             List<Cliente> Clientes = JSON.toClientes(clientes);
             
@@ -76,6 +106,7 @@ public class atualizaDados implements WindowListener
             tela.getEncomendas().setModel(modelEncomendas);
             
             tela.repaint();
+            */
             
         }catch (FileNotFoundException ex) 
             {
@@ -86,9 +117,9 @@ public class atualizaDados implements WindowListener
     @Override
     public void windowClosing(WindowEvent e)
     {
-        //PROVAVELMENTE TEREI QUE ALTERAR ISSO AQUI PARA LER DO USUARIO
         try 
         {
+            /*
             ListModel<Cliente> modelCliente = tela.getClientes().getModel();
             List<Cliente> clientes = new ArrayList<>();
             
@@ -97,7 +128,7 @@ public class atualizaDados implements WindowListener
             
             ListModel<Encomenda> modelEncomenda = tela.getEncomendas().getModel();
             List<Encomenda> encomendas = new ArrayList<>();
-            
+
             for (int i = 0; i < modelCliente.getSize(); i++) 
             {
                 clientes.add(modelCliente.getElementAt(i));
@@ -112,13 +143,29 @@ public class atualizaDados implements WindowListener
             {
                 encomendas.add(modelEncomenda.getElementAt(i));
             }
+            */
             
-            String ClientesToJSON = JSON.clientesToJSON(clientes);
-            String IngredientesToJSON = JSON.ingredientesToJSON(ingredientes);
-            String EncomendasToJSON = JSON.encomendasToJSON(encomendas);
+            /*
+            List<Cliente> clientes = tela.getUsuario().getClientes();
+            List<Encomenda> encomendas = tela.getUsuario().getEncomendas();
+            
+            for (int i = 0; i < clientes.size(); i++) 
+            {
+                clientes.add(clientes.get(i));
+            }
+            
+            for (int i = 0; i < encomendas.size(); i++) 
+            {
+                encomendas.add(encomendas.get(i));
+            }
+            */
+            
+            String ClientesToJSON = JSON.clientesToJSON(tela.getUsuario().getClientes());
+            String ProdutosToJSON = JSON.produtosToJSON(tela.getUsuario().getProdutos());
+            String EncomendasToJSON = JSON.encomendasToJSON(tela.getUsuario().getEncomendas());
             
             Arquivo.escreverArquivo(CAMINHOclientes, ClientesToJSON);
-            Arquivo.escreverArquivo(CAMINHOingredientes, IngredientesToJSON);
+            Arquivo.escreverArquivo(CAMINHOprodutos, ProdutosToJSON);
             Arquivo.escreverArquivo(CAMINHOencomendas, EncomendasToJSON);
             
         }catch (IOException ex) 

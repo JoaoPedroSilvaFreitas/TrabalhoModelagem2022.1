@@ -70,7 +70,7 @@ public class Cliente
     @Override
     public String toString()
     {
-        return this.nome + "  " + "   " + this.telefone + "   " + this.endereco;
+        return this.nome;
     }
     
 }

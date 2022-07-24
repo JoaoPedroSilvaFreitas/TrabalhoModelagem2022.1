@@ -13,12 +13,18 @@ import java.util.*;
 public class Usuario 
 {
     private String senha;
-    private List<Encomenda> encomendas = new ArrayList<Encomenda>();
-    private List<Cliente> clientes= new ArrayList<Cliente>();
-    private List<Ingrediente> ingredientes= new ArrayList<Ingrediente>();
+    private List<Encomenda> encomendas; //= new ArrayList<Encomenda>();
+    private List<Cliente> clientes; // = new ArrayList<Cliente>();
+    private List<Ingrediente> ingredientes; //= new ArrayList<Ingrediente>();
+    private List<Produto> produtos; //= new ArrayList<Produto>();
     
-    private List<Produto> produtos= new ArrayList<Produto>();
-
+    public Usuario()
+    {
+        clientes = new ArrayList<Cliente>();
+        encomendas = new ArrayList<Encomenda>();
+        produtos = new ArrayList<Produto>();
+    }
+    
     public void addCliente(Cliente cliente)
     {
         clientes.add(cliente);
