@@ -63,6 +63,19 @@ public class Tela extends JFrame
     private JTextField cadastrarDoceValor;
     private JTextField cadastrarDoceCusto;
     
+    private JLabel nomeCliente;
+    private JLabel telefoneCliente;
+    private JLabel enderecoCliente;
+    private JLabel dataDiaEntrega;
+    private JLabel dataMesEntrega;
+    private JLabel dataAnoEntrega;
+    private JLabel dataDiaPedido;
+    private JLabel dataMesPedido;
+    private JLabel dataAnoPedido;
+    private JLabel encomendaInfo;
+    private JLabel encomendaValor;
+    private JLabel encomendaGasto;
+    
     private JList<Cliente> clientes;
     private JList<Ingrediente> ingredientes;
     private JList<Encomenda> encomendas;
@@ -845,13 +858,100 @@ public class Tela extends JFrame
         encomendas = new JList(usuario.getEncomendas().toArray());
         encomendas.setVisible(true);
         encomendas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        encomendas.addListSelectionListener(new relatorioInfo(this));
         painelFuncoes.add(new JScrollPane(encomendas),BorderLayout.EAST);
         
         JPanel painelInfo;
         painelInfo = new JPanel();
         painelInfo.setBackground(new Color(239,186,237));
-        painelInfo.setLayout(new BorderLayout());
+        painelInfo.setLayout(new GridLayout(0,2));
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JLabel clienteNome = new JLabel("Nome:", SwingConstants.CENTER);
+        clienteNome.setFont(new Font("Arial", Font.PLAIN, 50));
+        nomeCliente = new JLabel();
+        nomeCliente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(clienteNome);
+        painelInfo.add(nomeCliente);
+        
+        JLabel clienteTelefone = new JLabel("Telefone:", SwingConstants.CENTER);
+        clienteTelefone.setFont(new Font("Arial", Font.PLAIN, 50));
+        telefoneCliente = new JLabel();
+        telefoneCliente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(clienteTelefone);
+        painelInfo.add(telefoneCliente);
+        
+        JLabel clienteEndereco = new JLabel("Endereco:", SwingConstants.CENTER);
+        clienteEndereco.setFont(new Font("Arial", Font.PLAIN, 50));
+        enderecoCliente = new JLabel();
+        enderecoCliente.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(clienteEndereco);
+        painelInfo.add(enderecoCliente);
+        
+        JLabel dataPedido = new JLabel("Pedido:", SwingConstants.CENTER);
+        dataPedido.setFont(new Font("Arial", Font.PLAIN, 50));
+        
+        JPanel painelDataPedido;
+        painelDataPedido = new JPanel();
+        painelDataPedido.setBackground(new Color(239,186,237));
+        painelDataPedido.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        dataDiaPedido = new JLabel();
+        dataDiaPedido.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataPedido.add(dataDiaPedido);
+        dataMesPedido = new JLabel();
+        dataMesPedido.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataPedido.add(dataMesPedido);
+        dataAnoPedido = new JLabel();
+        dataAnoPedido.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataPedido.add(dataAnoPedido);
+        
+        painelInfo.add(dataPedido);
+        painelInfo.add(painelDataPedido);
+        
+        JLabel dataEntrega = new JLabel("Entrega:", SwingConstants.CENTER);
+        dataEntrega.setFont(new Font("Arial", Font.PLAIN, 50));
+        
+        JPanel painelDataEntrega;
+        painelDataEntrega = new JPanel();
+        painelDataEntrega.setBackground(new Color(239,186,237));
+        painelDataEntrega.setLayout(new GridLayout(0,3));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        dataDiaEntrega = new JLabel();
+        dataDiaEntrega.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataEntrega.add(dataDiaEntrega);
+        dataMesEntrega = new JLabel();
+        dataMesEntrega.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataEntrega.add(dataMesEntrega);
+        dataAnoEntrega = new JLabel();
+        dataAnoEntrega.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataEntrega.add(dataAnoEntrega);
+        
+        painelInfo.add(dataEntrega);
+        painelInfo.add(painelDataEntrega);
+        
+        JLabel infoEncomenda = new JLabel("info:", SwingConstants.CENTER);
+        infoEncomenda.setFont(new Font("Arial", Font.PLAIN, 50));
+        encomendaInfo = new JLabel();
+        encomendaInfo.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(infoEncomenda);
+        painelInfo.add(encomendaInfo);
+        
+        JLabel valorEncomenda = new JLabel("Valor:", SwingConstants.CENTER);
+        valorEncomenda.setFont(new Font("Arial", Font.PLAIN, 50));
+        encomendaValor = new JLabel();
+        encomendaValor.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(valorEncomenda);
+        painelInfo.add(encomendaValor);
+        
+        JLabel gastoEncomenda = new JLabel("Gasto:", SwingConstants.CENTER);
+        gastoEncomenda.setFont(new Font("Arial", Font.PLAIN, 50));
+        encomendaGasto = new JLabel();
+        encomendaGasto.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(gastoEncomenda);
+        painelInfo.add(encomendaGasto);
         
         painelFuncoes.add(painelInfo,BorderLayout.CENTER);
         
@@ -1041,6 +1141,68 @@ public class Tela extends JFrame
     {
         return cadastrarEncomendaInfo;
     }
+
+    public JLabel getNomeCliente() 
+    {
+        return nomeCliente;
+    }
+
+    public JLabel getTelefoneCliente() 
+    {
+        return telefoneCliente;
+    }
+
+    public JLabel getEnderecoCliente() 
+    {
+        return enderecoCliente;
+    }
+
+    public JLabel getDataDiaEntrega() 
+    {
+        return dataDiaEntrega;
+    }
+
+    public JLabel getDataMesEntrega() 
+    {
+        return dataMesEntrega;
+    }
+
+    public JLabel getDataAnoEntrega() 
+    {
+        return dataAnoEntrega;
+    }
+
+    public JLabel getDataDiaPedido() 
+    {
+        return dataDiaPedido;
+    }
+
+    public JLabel getDataMesPedido() 
+    {
+        return dataMesPedido;
+    }
+
+    public JLabel getDataAnoPedido() 
+    {
+        return dataAnoPedido;
+    }
+
+    public JLabel getEncomendaInfo() 
+    {
+        return encomendaInfo;
+    }
+
+    public JLabel getEncomendaValor() 
+    {
+        return encomendaValor;
+    }
+
+    public JLabel getEncomendaGasto() 
+    {
+        return encomendaGasto;
+    }
+    
+    
     
     //set
     public void setSenha(JPasswordField senha)
@@ -1162,6 +1324,72 @@ public class Tela extends JFrame
     {
         this.cadastrarDataPedidoAno = cadastrarDataPedidoAno;
     }
+
+    public void setNomeCliente(JLabel nomeCliente) 
+    {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public void setTelefoneCliente(JLabel telefoneCliente) 
+    {
+        this.telefoneCliente = telefoneCliente;
+    }
+
+    public void setEnderecoCliente(JLabel enderecoCliente) 
+    {
+        this.enderecoCliente = enderecoCliente;
+    }
+
+    public void setDataDiaEntrega(JLabel dataDiaEntrega) 
+    {
+        this.dataDiaEntrega = dataDiaEntrega;
+    }
+
+    public void setDataMesEntrega(JLabel dataMesEntrega) 
+    {
+        this.dataMesEntrega = dataMesEntrega;
+    }
+
+    public void setDataAnoEntrega(JLabel dataAnoEntrega) 
+    {
+        this.dataAnoEntrega = dataAnoEntrega;
+    }
+
+    public void setDataDiaPedido(JLabel dataDiaPedido) 
+    {
+        this.dataDiaPedido = dataDiaPedido;
+    }
+
+    public void setDataMesPedido(JLabel dataMesPedido) 
+    {
+        this.dataMesPedido = dataMesPedido;
+    }
+
+    public void setDataAnoPedido(JLabel dataAnoPedido) 
+    {
+        this.dataAnoPedido = dataAnoPedido;
+    }
+
+    public void setClientes(JList<Cliente> clientes) 
+    {
+        this.clientes = clientes;
+    }
+
+    public void setEncomendaInfo(JLabel encomendaInfo) 
+    {
+        this.encomendaInfo = encomendaInfo;
+    }
+
+    public void setEncomendaValor(JLabel encomendaValor) 
+    {
+        this.encomendaValor = encomendaValor;
+    }
+
+    public void setEncomendaGasto(JLabel encomendaGasto) 
+    {
+        this.encomendaGasto = encomendaGasto;
+    }
+    
     
     
     

@@ -46,8 +46,8 @@ public class atualizaDados implements WindowListener
             String clientes = Arquivo.lerArquivo(CAMINHOclientes);
             List<Cliente> Clientes = JSON.toClientes(clientes);
             
-            String produtos = Arquivo.lerArquivo(CAMINHOprodutos);
-            List<Produto> Produtos = JSON.toProdutos(produtos);
+            //String produtos = Arquivo.lerArquivo(CAMINHOprodutos);
+            //List<Produto> Produtos = JSON.toProdutos(produtos);
             
             String encomendas = Arquivo.lerArquivo(CAMINHOencomendas);
             List<Encomenda> Encomendas = JSON.toEncomendas(encomendas);
@@ -57,10 +57,12 @@ public class atualizaDados implements WindowListener
                 tela.getUsuario().addCliente(cliente);
             }
             
+            /*
             for (Produto produto : Produtos) 
             {
                 tela.getUsuario().addProduto(produto);
             }
+            */
             
             for (Encomenda encomenda : Encomendas) 
             {
@@ -161,11 +163,11 @@ public class atualizaDados implements WindowListener
             */
             
             String ClientesToJSON = JSON.clientesToJSON(tela.getUsuario().getClientes());
-            String ProdutosToJSON = JSON.produtosToJSON(tela.getUsuario().getProdutos());
+            //String ProdutosToJSON = JSON.produtosToJSON(tela.getUsuario().getProdutos());
             String EncomendasToJSON = JSON.encomendasToJSON(tela.getUsuario().getEncomendas());
             
             Arquivo.escreverArquivo(CAMINHOclientes, ClientesToJSON);
-            Arquivo.escreverArquivo(CAMINHOprodutos, ProdutosToJSON);
+            //Arquivo.escreverArquivo(CAMINHOprodutos, ProdutosToJSON);
             Arquivo.escreverArquivo(CAMINHOencomendas, EncomendasToJSON);
             
         }catch (IOException ex) 

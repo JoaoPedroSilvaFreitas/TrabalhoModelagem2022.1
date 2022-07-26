@@ -15,6 +15,11 @@ public abstract class Produto
     protected int quantidade;
     protected String info;
     
+    public Produto()
+    {
+        
+    }
+    
     public double getValor()
     {
         return valor;

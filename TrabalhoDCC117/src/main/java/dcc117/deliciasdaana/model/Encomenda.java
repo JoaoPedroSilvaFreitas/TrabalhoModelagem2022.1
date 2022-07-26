@@ -33,6 +33,8 @@ public class Encomenda
     
     private void calculaValorGasto()
     {
+        this.valorTotal = 0;
+        this.gastoTotal = 0;
         for(Produto produto : produtos)
         {
             this.valorTotal += produto.getValor();
@@ -68,11 +70,13 @@ public class Encomenda
     
     public double getValorTotal()
     {
+        calculaValorGasto();
         return this.valorTotal;
     }
     
     public double getGastoTotal()
     {
+        calculaValorGasto();
         return this.gastoTotal;
     }
     
