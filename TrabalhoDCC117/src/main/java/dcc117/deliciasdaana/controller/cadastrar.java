@@ -40,24 +40,35 @@ public class cadastrar implements ActionListener
                 if(TelaId == 2)
                 {
                     int idCliente = tela.getClientes().getSelectedIndex();
+                    int idProduto = tela.getProdutos().getSelectedIndex();
                     
                     if(idCliente == -1) 
                     {
                         JOptionPane.showMessageDialog(tela, "ERRO:Selecione um cliente");
                     }else
                         {
-                            //DefaultListModel<Cliente> modelClientes = (DefaultListModel<Cliente>) tela.getClientes().getModel();
-                            Cliente cliente = tela.getUsuario().getClientes().get(idCliente);//modelClientes.getElementAt(idCliente);
-                            
-                            
-                            Data dataPedido = new Data(Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()), Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()), Integer.parseInt(tela.getCadastrarDataPedidoAno().getText()));
-                            Data dataEntrega = new Data(Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()), Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()), Integer.parseInt(tela.getCadastrarDataEntregaAno().getText()));
-                            Encomenda encomenda = new Encomenda(cliente/*modelClientes.getElementAt(idCliente)*/, dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
-                            
-                            
-                            tela.getUsuario().addEncomenda(encomenda);
-                            JOptionPane.showMessageDialog(tela,"Encomenda registrada");
-                            tela.repaint();
+                            if(idProduto == -1)
+                            {
+                                JOptionPane.showMessageDialog(tela, "ERRO:Selecione um ou  mais produtos");
+                            }else
+                                {
+                                    //DefaultListModel<Cliente> modelClientes = (DefaultListModel<Cliente>) tela.getClientes().getModel();
+                                    Cliente cliente = tela.getUsuario().getClientes().get(idCliente);//modelClientes.getElementAt(idCliente);
+                                    
+                                    
+                                    Data dataPedido = new Data(Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()), Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()), Integer.parseInt(tela.getCadastrarDataPedidoAno().getText()));
+                                    Data dataEntrega = new Data(Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()), Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()), Integer.parseInt(tela.getCadastrarDataEntregaAno().getText()));
+                                    Encomenda encomenda = new Encomenda(cliente/*modelClientes.getElementAt(idCliente)*/, dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
+                                    
+                                    for(Produto produtos : tela.getProdutos().getSelectedValuesList())
+                                    {
+                                        encomenda.addProduto(produtos);
+                                    }
+
+                                    tela.getUsuario().addEncomenda(encomenda);
+                                    JOptionPane.showMessageDialog(tela,"Encomenda registrada");
+                                    tela.repaint();
+                                }
                         }
                 }else
                     {

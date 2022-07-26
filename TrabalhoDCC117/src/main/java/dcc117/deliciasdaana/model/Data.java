@@ -23,6 +23,22 @@ public class Data
         this.ano = ano;
     }
     
+    public boolean verificaData(int diaI, int mesI, int anoI, int diaF, int mesF, int anoF)
+    {
+        if((this.ano >= anoI) && (this.ano <= anoF))
+        {
+            if((this.mes >= mesI) && (this.mes <= mesF))
+            {
+                if((this.dia >= diaI) && (this.dia <= diaF))
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
     public int getDia()
     {
         return this.dia;

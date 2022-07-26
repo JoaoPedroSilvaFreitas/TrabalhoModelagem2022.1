@@ -15,6 +15,7 @@ import java.awt.*;
 import dcc117.deliciasdaana.controller.*;
 import dcc117.deliciasdaana.controller.util.*;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public class Tela extends JFrame
 {
@@ -76,10 +77,12 @@ public class Tela extends JFrame
     private JLabel encomendaValor;
     private JLabel encomendaGasto;
     
+    private JLabel consultaValor;
+    private JLabel consultaGasto;
+    
     private JList<Cliente> clientes;
     private JList<Ingrediente> ingredientes;
     private JList<Encomenda> encomendas;
-    
     private JList<Produto> produtos;
     
     private final ImageIcon imagemLogo = new ImageIcon("images/logo.jpg");
@@ -255,7 +258,7 @@ public class Tela extends JFrame
         consultarGastoLucroBtn.setBackground(new Color(239,186,237));
         consultarGastoLucroBtn.setBorderPainted(false);
         consultarGastoLucroBtn.setIcon(imagemGastoLucro);
-        consultarGastoLucroBtn.addActionListener(new consultarGastoLucro(this));
+        consultarGastoLucroBtn.addActionListener(new consultarGastoLucro(this, 0));
         painelFuncoes.add(consultarGastoLucroBtn);
         
         JButton relatorioEncomendaBtn;
@@ -479,19 +482,6 @@ public class Tela extends JFrame
     
     private void telaRegistraEncomendaAux()
     {
-        JLabel null0 = new JLabel();
-        JLabel null1 = new JLabel();
-        JLabel null2 = new JLabel();
-        JLabel null3 = new JLabel();
-        JLabel null4 = new JLabel();
-        JLabel null5 = new JLabel();
-        JLabel null6 = new JLabel();
-        JLabel null7 = new JLabel();
-        JLabel null8 = new JLabel();
-        JLabel null9 = new JLabel();
-        JLabel null10 = new JLabel();
-        JLabel null11 = new JLabel();
-        JLabel null12 = new JLabel();
         
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
@@ -547,13 +537,11 @@ public class Tela extends JFrame
         clientes = new JList(usuario.getClientes().toArray());
         clientes.setVisible(true);
         clientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        //clientes.addListSelectionListener(new InfoListaCliente(this));
         
         produtos = new JList(usuario.getProdutos().toArray());
         produtos.setVisible(true);
         produtos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        //clientes.addListSelectionListener(new InfoListaCliente(this));
-
+        
         JPanel painelDataEntrega;
         painelDataEntrega = new JPanel();
         painelDataEntrega.setBackground(new Color(239,186,237));
@@ -691,6 +679,7 @@ public class Tela extends JFrame
         this.painelRegistraCliente.add(painelFuncoes,BorderLayout.CENTER);
     }
     
+    /*
     public void telaRegistraIngrediente()
     {
         visibilidadeTelaUsuario();
@@ -786,6 +775,7 @@ public class Tela extends JFrame
         
         this.painelRegistraIngrediente.add(painelFuncoes,BorderLayout.CENTER);
     }
+    */
     
     public void telaConsultaGastoLucro()
     {
@@ -817,8 +807,89 @@ public class Tela extends JFrame
         JPanel painelFuncoes;
         painelFuncoes = new JPanel();
         painelFuncoes.setBackground(new Color(239,186,237));
-        painelFuncoes.setLayout(new GridLayout(0,3));
+        painelFuncoes.setLayout(new BorderLayout());
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        
+        JPanel painelDatas;
+        painelDatas = new JPanel();
+        painelDatas.setBackground(new Color(239,186,237));
+        painelDatas.setLayout(new GridLayout(0,2));
+        //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JPanel painelDataInicio;
+        painelDataInicio = new JPanel();
+        painelDataInicio.setBackground(new Color(239,186,237));
+        painelDataInicio.setLayout(new GridLayout(0,4));
+        
+        JLabel DataInicio = new JLabel("De:", SwingConstants.CENTER);
+        DataInicio.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDataInicio.add(DataInicio);
+        cadastrarDataPedidoDia = new JTextField(2);
+        cadastrarDataPedidoDia.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataInicio.add(cadastrarDataPedidoDia);
+        
+        cadastrarDataPedidoMes = new JTextField(2);
+        cadastrarDataPedidoMes.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataInicio.add(cadastrarDataPedidoMes);
+        
+        cadastrarDataPedidoAno = new JTextField(4);
+        cadastrarDataPedidoAno.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataInicio.add(cadastrarDataPedidoAno);
+        
+        JPanel painelDataFim;
+        painelDataFim = new JPanel();
+        painelDataFim.setBackground(new Color(239,186,237));
+        painelDataFim.setLayout(new GridLayout(0,4));
+        
+        JLabel DataFim = new JLabel("até:", SwingConstants.CENTER);
+        DataFim.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDataFim.add(DataFim);
+        cadastrarDataEntregaDia = new JTextField(2);
+        cadastrarDataEntregaDia.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataFim.add(cadastrarDataEntregaDia);
+        
+        cadastrarDataEntregaMes = new JTextField(2);
+        cadastrarDataEntregaMes.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataFim.add(cadastrarDataEntregaMes);
+        
+        cadastrarDataEntregaAno = new JTextField(4);
+        cadastrarDataEntregaAno.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelDataFim.add(cadastrarDataEntregaAno);
+        
+        painelDatas.add(painelDataInicio);
+        painelDatas.add(painelDataFim);
+        
+        JPanel painelInfo;
+        painelInfo = new JPanel();
+        painelInfo.setBackground(new Color(239,186,237));
+        painelInfo.setLayout(new GridLayout(0,2));
+        
+        JLabel valorConsultar = new JLabel("Lucro:", SwingConstants.CENTER);
+        valorConsultar.setFont(new Font("Arial", Font.PLAIN, 50));
+        consultaValor = new JLabel();
+        consultaValor.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(valorConsultar);
+        painelInfo.add(consultaValor);
+        
+        JLabel gastoConsultar = new JLabel("Gasto:", SwingConstants.CENTER);
+        gastoConsultar.setFont(new Font("Arial", Font.PLAIN, 50));
+        consultaGasto = new JLabel();
+        consultaGasto.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelInfo.add(gastoConsultar);
+        painelInfo.add(consultaGasto);
+        
+        JButton consultarBtn;
+        consultarBtn = new JButton("",imagemGastoLucro);
+        consultarBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        consultarBtn.setBackground(new Color(239,186,237));
+        consultarBtn.setBorderPainted(false);
+        consultarBtn.addActionListener(new consultarGastoLucro(this, 1));
+        painelFuncoes.add(consultarBtn,BorderLayout.SOUTH);
+        
+        
+        painelFuncoes.add(painelInfo,BorderLayout.CENTER);
+        painelFuncoes.add(painelDatas,BorderLayout.NORTH);
         this.painelConsultaGastoLucro.add(painelFuncoes,BorderLayout.CENTER);
     }
     
@@ -1201,8 +1272,22 @@ public class Tela extends JFrame
     {
         return encomendaGasto;
     }
-    
-    
+
+    public JLabel getConsultaValor() 
+    {
+        return consultaValor;
+    }
+
+    public JLabel getConsultaGasto() 
+    {
+        return consultaGasto;
+    }
+
+    public JList<Produto> getProdutos() 
+    {
+        return produtos;
+    }
+
     
     //set
     public void setSenha(JPasswordField senha)
@@ -1389,8 +1474,16 @@ public class Tela extends JFrame
     {
         this.encomendaGasto = encomendaGasto;
     }
-    
-    
+
+    public void setConsultaValor(JLabel consultaValor) 
+    {
+        this.consultaValor = consultaValor;
+    }
+
+    public void setConsultaGasto(JLabel consultaGasto) 
+    {
+        this.consultaGasto = consultaGasto;
+    }
     
     
     //visibilidade

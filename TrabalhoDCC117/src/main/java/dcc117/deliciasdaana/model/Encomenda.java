@@ -12,7 +12,6 @@ import java.util.*;
  */
 public class Encomenda 
 {
-    private int id;
     private Cliente cliente;
     private Data dataDoPedido;
     private Data dataDeEntrega;
@@ -29,6 +28,7 @@ public class Encomenda
         this.valorTotal = 0;
         this.gastoTotal = 0;
         this.info = info;
+        produtos = new ArrayList<Produto>();
     }
     
     private void calculaValorGasto()
@@ -46,11 +46,6 @@ public class Encomenda
     public void addProduto(Produto produto)
     {
         produtos.add(produto);
-    }
-    
-    public int getId()
-    {
-        return this.id;
     }
     
     public Cliente getCliente()
@@ -84,10 +79,15 @@ public class Encomenda
     {
         return this.info;
     }
-    
-    public void setId(int id)
+
+    public List<Produto> getProdutos() 
     {
-        this.id = id;
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) 
+    {
+        this.produtos = produtos;
     }
     
     public void setCliente(Cliente cliente)

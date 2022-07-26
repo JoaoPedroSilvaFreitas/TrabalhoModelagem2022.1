@@ -23,6 +23,6 @@ public class registrarIngrediente implements ActionListener
     
     public void actionPerformed(ActionEvent e)
     {
-        tela.telaRegistraIngrediente();
+        //tela.telaRegistraIngrediente();
     }
 }
