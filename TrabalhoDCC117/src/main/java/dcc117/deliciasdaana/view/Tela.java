@@ -77,6 +77,41 @@ public class Tela extends JFrame
     private JLabel encomendaValor;
     private JLabel encomendaGasto;
     
+    private JLabel calendarioMes;
+    private JLabel calendarioAno;
+    private JLabel dia1;
+    private JLabel dia2;
+    private JLabel dia3;
+    private JLabel dia4;
+    private JLabel dia5;
+    private JLabel dia6;
+    private JLabel dia7;
+    private JLabel dia8;
+    private JLabel dia9;
+    private JLabel dia10;
+    private JLabel dia11;
+    private JLabel dia12;
+    private JLabel dia13;
+    private JLabel dia14;
+    private JLabel dia15;
+    private JLabel dia16;
+    private JLabel dia17;
+    private JLabel dia18;
+    private JLabel dia19;
+    private JLabel dia20;
+    private JLabel dia21;
+    private JLabel dia22;
+    private JLabel dia23;
+    private JLabel dia24;
+    private JLabel dia25;
+    private JLabel dia26;
+    private JLabel dia27;
+    private JLabel dia28;
+    private JLabel dia29;
+    private JLabel dia30;
+    private JLabel dia31;
+    
+    
     private JLabel consultaValor;
     private JLabel consultaGasto;
     
@@ -1059,8 +1094,170 @@ public class Tela extends JFrame
         JPanel painelFuncoes;
         painelFuncoes = new JPanel();
         painelFuncoes.setBackground(new Color(239,186,237));
-        painelFuncoes.setLayout(new GridLayout(0,3));
+        painelFuncoes.setLayout(new BorderLayout());
         //painelFuncoes.setPreferredSize(new Dimension(1280, 720));
+        
+        JPanel painelMeses;
+        painelMeses = new JPanel();
+        painelMeses.setBackground(new Color(239,186,237));
+        painelMeses.setLayout(new GridLayout(0,4));
+        
+        JButton antMesBtn;
+        antMesBtn = new JButton("Ant");
+        antMesBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        antMesBtn.setBackground(new Color(239,186,237));
+        antMesBtn.setBorderPainted(false);
+        antMesBtn.addActionListener(new alterarMes(this, 0));
+        painelMeses.add(antMesBtn);
+        
+        calendarioMes = new JLabel("1");
+        calendarioMes.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelMeses.add(calendarioMes);
+        
+        calendarioAno = new JLabel("2022");
+        calendarioAno.setFont(new Font("Arial", Font.PLAIN, 50));
+        painelMeses.add(calendarioAno);
+        
+        JButton proxMesBtn;
+        proxMesBtn = new JButton("Prox");
+        proxMesBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        proxMesBtn.setBackground(new Color(239,186,237));
+        proxMesBtn.setBorderPainted(false);
+        proxMesBtn.addActionListener(new  alterarMes(this, 1));
+        painelMeses.add(proxMesBtn);
+        
+        JPanel painelDias;
+        painelDias = new JPanel();
+        painelDias.setBackground(new Color(239,186,237));
+        painelDias.setLayout(new GridLayout(0,6));
+        
+        dia1 = new JLabel("1");
+        dia1.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia1);
+        
+        dia2 = new JLabel("2");
+        dia2.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia2);
+        
+        dia3 = new JLabel("3");
+        dia3.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia3);
+        
+        dia4 = new JLabel("4");
+        dia4.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia4);
+        
+        dia5 = new JLabel("5");
+        dia5.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia5);
+        
+        dia6 = new JLabel("6");
+        dia6.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia6);
+        
+        dia7 = new JLabel("7");
+        dia7.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia7);
+        
+        dia8 = new JLabel("8");
+        dia8.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia8);
+        
+        dia9 = new JLabel("9");
+        dia9.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia9);
+        
+        dia10 = new JLabel("10");
+        dia10.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia10);
+        
+        dia11 = new JLabel("11");
+        dia11.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia11);
+        
+        dia12 = new JLabel("12");
+        dia12.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia12);
+        
+        dia13 = new JLabel("13");
+        dia13.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia13);
+        
+        dia14 = new JLabel("14");
+        dia14.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia14);
+        
+        dia15 = new JLabel("15");
+        dia15.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia15);
+        
+        dia16 = new JLabel("16");
+        dia16.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia16);
+        
+        dia17 = new JLabel("17");
+        dia17.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia17);
+        
+        dia18 = new JLabel("18");
+        dia18.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia18);
+        
+        dia19 = new JLabel("19");
+        dia19.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia19);
+        
+        dia20 = new JLabel("20");
+        dia20.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia20);
+        
+        dia21 = new JLabel("21");
+        dia21.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia21);
+        
+        dia22 = new JLabel("22");
+        dia22.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia22);
+        
+        dia23 = new JLabel("23");
+        dia23.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia23);
+        
+        dia24 = new JLabel("24");
+        dia24.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia24);
+        
+        dia25 = new JLabel("25");
+        dia25.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia25);
+        
+        dia26 = new JLabel("26");
+        dia26.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia26);
+        
+        dia27 = new JLabel("27");
+        dia27.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia27);
+        
+        dia28 = new JLabel("28");
+        dia28.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia28);
+        
+        dia29 = new JLabel("29");
+        dia29.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia29);
+        
+        dia30 = new JLabel("30");
+        dia30.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia30);
+        
+        dia31 = new JLabel("31");
+        dia31.setFont(new Font("Arial", Font.PLAIN, 20));
+        painelDias.add(dia31);
+        
+        
+        painelFuncoes.add(painelDias, BorderLayout.CENTER);
+        painelFuncoes.add(painelMeses, BorderLayout.NORTH);
         this.painelCalendario.add(painelFuncoes,BorderLayout.CENTER);
     }
     
@@ -1287,6 +1484,173 @@ public class Tela extends JFrame
     {
         return produtos;
     }
+
+    public JLabel getDia1() 
+    {
+        return dia1;
+    }
+
+    public JLabel getDia2() 
+    {
+        return dia2;
+    }
+
+    public JLabel getDia3() 
+    {
+        return dia3;
+    }
+
+    public JLabel getDia4() 
+    {
+        return dia4;
+    }
+
+    public JLabel getDia5() 
+    {
+        return dia5;
+    }
+
+    public JLabel getDia6() 
+    {
+        return dia6;
+    }
+
+    public JLabel getDia7() 
+    {
+        return dia7;
+    }
+
+    public JLabel getDia8() 
+    {
+        return dia8;
+    }
+
+    public JLabel getDia9() 
+    {
+        return dia9;
+    }
+
+    public JLabel getDia10() 
+    {
+        return dia10;
+    }
+
+    public JLabel getDia11() 
+    {
+        return dia11;
+    }
+
+    public JLabel getDia12() 
+    {
+        return dia12;
+    }
+
+    public JLabel getDia13() 
+    {
+        return dia13;
+    }
+
+    public JLabel getDia14() 
+    {
+        return dia14;
+    }
+
+    public JLabel getDia15() 
+    {
+        return dia15;
+    }
+
+    public JLabel getDia16() 
+    {
+        return dia16;
+    }
+
+    public JLabel getDia17() 
+    {
+        return dia17;
+    }
+
+    public JLabel getDia18() 
+    {
+        return dia18;
+    }
+
+    public JLabel getDia19() 
+    {
+        return dia19;
+    }
+
+    public JLabel getDia20() 
+    {
+        return dia20;
+    }
+
+    public JLabel getDia21() 
+    {
+        return dia21;
+    }
+
+    public JLabel getDia22() 
+    {
+        return dia22;
+    }
+
+    public JLabel getDia23() 
+    {
+        return dia23;
+    }
+
+    public JLabel getDia24() 
+    {
+        return dia24;
+    }
+
+    public JLabel getDia25() 
+    {
+        return dia25;
+    }
+
+    public JLabel getDia26() 
+    {
+        return dia26;
+    }
+
+    public JLabel getDia27() 
+    {
+        return dia27;
+    }
+
+    public JLabel getDia28() 
+    {
+        return dia28;
+    }
+
+    public JLabel getDia29() 
+    {
+        return dia29;
+    }
+
+    public JLabel getDia30() 
+    {
+        return dia30;
+    }
+
+    public JLabel getDia31() 
+    {
+        return dia31;
+    }
+
+    public JLabel getCalendarioMes() 
+    {
+        return calendarioMes;
+    }
+
+    public JLabel getCalendarioAno() 
+    {
+        return calendarioAno;
+    }
+    
+    
 
     
     //set
