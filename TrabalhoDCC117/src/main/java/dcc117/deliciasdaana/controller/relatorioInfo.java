@@ -12,7 +12,6 @@ package dcc117.deliciasdaana.controller;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import dcc117.deliciasdaana.view.*;
-import javax.swing.*;
 
 
 public class relatorioInfo implements ListSelectionListener

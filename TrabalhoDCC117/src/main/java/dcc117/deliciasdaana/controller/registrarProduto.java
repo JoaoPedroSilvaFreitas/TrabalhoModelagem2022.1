@@ -9,7 +9,6 @@ package dcc117.deliciasdaana.controller;
  * @author joaop
  */
 
-import dcc117.deliciasdaana.model.*;
 import dcc117.deliciasdaana.view.*;
 import java.awt.event.*;
 

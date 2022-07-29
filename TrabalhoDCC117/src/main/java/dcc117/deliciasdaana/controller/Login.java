@@ -12,7 +12,6 @@ package dcc117.deliciasdaana.controller;
 import dcc117.deliciasdaana.model.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import dcc117.deliciasdaana.view.*;
 

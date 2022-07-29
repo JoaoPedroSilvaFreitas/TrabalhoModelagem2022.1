@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import dcc117.deliciasdaana.view.*;
 import dcc117.deliciasdaana.model.*;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -56,18 +55,36 @@ public class cadastrar implements ActionListener
                                     Cliente cliente = tela.getUsuario().getClientes().get(idCliente);//modelClientes.getElementAt(idCliente);
                                     
                                     
-                                    Data dataPedido = new Data(Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()), Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()), Integer.parseInt(tela.getCadastrarDataPedidoAno().getText()));
-                                    Data dataEntrega = new Data(Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()), Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()), Integer.parseInt(tela.getCadastrarDataEntregaAno().getText()));
-                                    Encomenda encomenda = new Encomenda(cliente/*modelClientes.getElementAt(idCliente)*/, dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
-                                    
-                                    for(Produto produtos : tela.getProdutos().getSelectedValuesList())
+                                    if((Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()) <= 0 || Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()) <= 0) || (Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()) > 12 || Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()) > 12))
                                     {
-                                        encomenda.addProduto(produtos);
-                                    }
+                                        JOptionPane.showMessageDialog(tela, "ERRO:Mês Inválid0");
+                                        
+                                    }else if((Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()) <= 0 || Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()) <= 0) || (Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()) > 31 || Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()) > 31))
+                                    {
+                                        JOptionPane.showMessageDialog(tela, "ERRO:Dia Inválido");   
 
-                                    tela.getUsuario().addEncomenda(encomenda);
-                                    JOptionPane.showMessageDialog(tela,"Encomenda registrada");
-                                    tela.repaint();
+                                    }else if(((Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()) % 4 == 0) && (Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()) == 31)) || ((Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()) % 4 == 0) && Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()) == 31))
+                                    {  
+                                        JOptionPane.showMessageDialog(tela, "ERRO:Dia Inválido");
+                                    }else if((((Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()) == 2) && (Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()) > 28))) || (Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()) == 2) && (Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()) > 28))
+                                    {
+                                        JOptionPane.showMessageDialog(tela, "ERRO:Dia Inválido");
+                                    }
+                                    else
+                                        {
+                                            Data dataPedido = new Data(Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()), Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()), Integer.parseInt(tela.getCadastrarDataPedidoAno().getText()));
+                                            Data dataEntrega = new Data(Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()), Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()), Integer.parseInt(tela.getCadastrarDataEntregaAno().getText()));
+                                            Encomenda encomenda = new Encomenda(cliente/*modelClientes.getElementAt(idCliente)*/, dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
+
+                                            for(Produto produtos : tela.getProdutos().getSelectedValuesList())
+                                            {
+                                                encomenda.addProduto(produtos);
+                                            }
+
+                                            tela.getUsuario().addEncomenda(encomenda);
+                                            JOptionPane.showMessageDialog(tela,"Encomenda registrada");
+                                            tela.repaint();
+                                        }                                                                        
                                 }
                         }
                 }else
