@@ -113,6 +113,8 @@ public class Tela extends JFrame
     private JLabel dia30;
     private JLabel dia31;
     
+    private boolean atualizaClientes;
+    private boolean atualizaEncomendas;
     
     private JLabel consultaValor;
     private JLabel consultaGasto;
@@ -134,6 +136,48 @@ public class Tela extends JFrame
     private final ImageIcon imagemRegistra = new ImageIcon("images/botaoRegistrar.jpg");
     
  
+    public void atualizaClientes()
+    {
+        try 
+        {
+            String clientes = Arquivo.lerArquivo("dadosClientes.json");
+            List<Cliente> Clientes = JSON.toClientes(clientes);
+            
+            
+            for (Cliente cliente : Clientes) 
+            {
+                getUsuario().addCliente(cliente);
+            }
+
+        }catch (FileNotFoundException ex) 
+            {
+                JOptionPane.showMessageDialog(this, "ERRO: Não foi possível carregar os dados");
+            }
+    }
+    
+    public void atualizaEncomendas()
+    {
+        try 
+        {
+            String encomendas = Arquivo.lerArquivo("dadosEncomendas.json");
+            List<Encomenda> Encomendas = JSON.toEncomendas(encomendas);
+            
+            
+            for (Encomenda encomenda : Encomendas) 
+            {
+                getUsuario().addEncomenda(encomenda);
+            }
+            
+            repaint();
+            
+            
+            
+        }catch (FileNotFoundException ex) 
+            {
+                JOptionPane.showMessageDialog(this, "ERRO: Não foi possível carregar os dados");
+            }
+    }
+    
     Tela()
     {
         this.usuario = new Usuario();
@@ -147,6 +191,8 @@ public class Tela extends JFrame
         
         DefaultListModel<Encomenda> modelEncomenda = new DefaultListModel<>();
         encomendas = new JList<>(modelEncomenda);
+        
+        atualizaClientes = true;
         
         this.addWindowListener(new atualizaDados(this));
     }
@@ -490,6 +536,8 @@ public class Tela extends JFrame
         this.painelRegistraEncomenda.setLayout(new BorderLayout());
         this.painelRegistraEncomenda.setBackground(new Color(239,186,237));
         
+        //att();
+        
         telaRegistraEncomendaAux();
         
         this.add(this.painelRegistraEncomenda);
@@ -499,6 +547,11 @@ public class Tela extends JFrame
     
     private void telaRegistraEncomendaAux()
     {
+        if(atualizaClientes == true)
+        {
+            atualizaClientes();
+            atualizaClientes = false;
+        }
         
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
@@ -706,6 +759,12 @@ public class Tela extends JFrame
     
     private void telaConsultaGastoLucroAux()
     {
+        if(atualizaEncomendas == true)
+        {
+            atualizaEncomendas();
+            atualizaEncomendas = false;
+        }
+        
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
         sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
@@ -819,6 +878,13 @@ public class Tela extends JFrame
     
     private void telaRelatorioAux()
     {
+        if(atualizaEncomendas == true)
+        {
+            atualizaEncomendas();
+            atualizaEncomendas = false;
+        }
+        
+        
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
         sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));
@@ -950,6 +1016,12 @@ public class Tela extends JFrame
     
     private void telaCalendarioAux()
     {
+        if(atualizaEncomendas == true)
+        {
+            atualizaEncomendas();
+            atualizaEncomendas = false;
+        }
+        
         JButton sairBtn;
         sairBtn = new JButton("",imagemSetaSair);
         sairBtn.setFont(new Font("Arial", Font.PLAIN, 26));

@@ -27,7 +27,7 @@ import dcc117.deliciasdaana.model.*;
 public class atualizaDados implements WindowListener
 {
     private static final String CAMINHOclientes = "dadosClientes.json";
-    private static final String CAMINHOingredientes = "dadosIngredientes.json";
+    //private static final String CAMINHOingredientes = "dadosIngredientes.json";
     private static final String CAMINHOprodutos = "dadosProdutos.json";
     private static final String CAMINHOencomendas = "dadosEncomendas.json";
     private Tela tela;
@@ -70,45 +70,6 @@ public class atualizaDados implements WindowListener
             }
             
             tela.repaint();
-            
-            
-            /*
-            String clientes = Arquivo.lerArquivo(CAMINHOclientes);
-            List<Cliente> Clientes = JSON.toClientes(clientes);
-            
-            String ingredientes = Arquivo.lerArquivo(CAMINHOingredientes);
-            List<Ingrediente> Ingredientes = JSON.toIngredientes(ingredientes);
-            
-            String encomendas = Arquivo.lerArquivo(CAMINHOencomendas);
-            List<Encomenda> Encomendas = JSON.toEncomendas(encomendas);
-
-            DefaultListModel<Cliente> modelClientes = new DefaultListModel<>();
-            DefaultListModel<Ingrediente> modelIngredientes = new DefaultListModel<>();
-            DefaultListModel<Encomenda> modelEncomendas = new DefaultListModel<>();
-
-            for (Cliente cliente : Clientes) 
-            {
-                modelClientes.addElement(cliente);
-            }
-            
-            for (Ingrediente ingrediente : Ingredientes) 
-            {
-                modelIngredientes.addElement(ingrediente);
-            }
-            
-            for (Encomenda encomenda : Encomendas) 
-            {
-                modelEncomendas.addElement(encomenda);
-            }
-            
-            //PROVAVELMENTE TEREI QUE ALTERAR ISSO AQUI PARA ADICIONAR NO USUARIO
-            
-            tela.getClientes().setModel(modelClientes);
-            tela.getIngredientes().setModel(modelIngredientes);
-            tela.getEncomendas().setModel(modelEncomendas);
-            
-            tela.repaint();
-            */
             
         }catch (FileNotFoundException ex) 
             {
