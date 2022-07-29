@@ -1203,188 +1203,157 @@ public class Tela extends JFrame
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia1.getText()))
                     {
-                        //dia1.setText(dia1.getText() + encomenda.getId());
-                        dia1.setText("1 X");
+                        dia1.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia2.getText()))
                     {
-                        //dia2.setText(dia2.getText() + encomenda.getId());
-                        dia2.setText("2 X");
+                        dia2.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia3.getText()))
                     {
-                        //dia3.setText(dia3.getText() + encomenda.getId());
-                        dia3.setText("3 X");
+                        dia3.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia4.getText()))
                     {
-                        //dia4.setText(dia4.getText() + encomenda.getId());
-                        dia4.setText("4 X");
+                        dia4.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia5.getText()))
                     {
-                        //dia5.setText(dia5.getText() + encomenda.getId());
-                        dia5.setText("5 X");
+                        dia5.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia6.getText()))
                     {
-                        //dia6.setText(dia6.getText() + encomenda.getId());
-                        dia6.setText("6 X");
+                        dia6.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia7.getText()))
                     {
-                        //dia7.setText(dia7.getText() + encomenda.getId());
-                        dia7.setText("7 X");
+                        dia7.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia8.getText()))
                     {
-                        //dia8.setText(dia8.getText() + encomenda.getId());
-                        dia8.setText("8 X");
+                        dia8.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia9.getText()))
                     {
-                        //dia9.setText(dia9.getText() + encomenda.getId());
-                        dia9.setText("9 X");
+                        dia9.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia10.getText()))
                     {
-                        //dia10.setText(dia10.getText() + encomenda.getId());
-                        dia10.setText("10 X");
+                        dia10.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia11.getText()))
                     {
-                        //dia11.setText(dia11.getText() + encomenda.getId());
-                        dia11.setText("11 X");
+                        dia11.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia12.getText()))
                     {
-                        //dia12.setText(dia12.getText() + encomenda.getId());
-                        dia12.setText("12 X");
+                        dia12.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia13.getText()))
                     {
-                        //dia13.setText(dia13.getText() + encomenda.getId());
-                        dia13.setText("13 X");
+                        dia13.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia14.getText()))
                     {
-                        //dia14.setText(dia14.getText() + encomenda.getId());
-                        dia14.setText("14 X");
+                        dia14.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia15.getText()))
                     {
-                        //dia15.setText(dia15.getText() + encomenda.getId());
-                        dia15.setText("15 X");
+                        dia15.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia16.getText()))
                     {
-                        //dia16.setText(dia16.getText() + encomenda.getId());
-                        dia16.setText("16 X");
+                        dia16.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia17.getText()))
                     {
-                        //dia17.setText(dia17.getText() + encomenda.getId());
-                        dia17.setText("17 X");
+                        dia17.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia18.getText()))
                     {
-                        //dia18.setText(dia18.getText() + encomenda.getId());
-                        dia18.setText("18 X");
+                        dia18.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia19.getText()))
                     {
-                        //dia19.setText(dia19.getText() + encomenda.getId());
-                        dia19.setText("19 X");
+                        dia19.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia20.getText()))
                     {
-                        //dia20.setText(dia20.getText() + encomenda.getId());
-                        dia20.setText("20 X");
+                        dia20.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia21.getText()))
                     {
-                        //dia21.setText(dia21.getText() + encomenda.getId());
-                        dia21.setText("21 X");
+                        dia21.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia22.getText()))
                     {
-                        //dia22.setText(dia22.getText() + encomenda.getId());
-                        dia22.setText("22 X");
+                        dia22.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia23.getText()))
                     {
-                        //dia23.setText(dia23.getText() + encomenda.getId());
-                        dia23.setText("23 X");
+                        dia23.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia24.getText()))
                     {
-                        //dia24.setText(dia24.getText() + encomenda.getId());
-                        dia24.setText("24 X");
+                        dia24.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia25.getText()))
                     {
-                        //dia25.setText(dia25.getText() + encomenda.getId());
-                        dia25.setText("25 X");
+                        dia25.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia26.getText()))
                     {
-                        //dia26.setText(dia26.getText() + encomenda.getId());
-                        dia26.setText("26 X");
+                        dia26.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia27.getText()))
                     {
-                        //dia27.setText(dia27.getText() + encomenda.getId());
-                        dia27.setText("27 X");
+                        dia27.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia28.getText()))
                     {
-                        //dia28.setText(dia28.getText() + encomenda.getId());
-                        dia28.setText("28 X");
+                        dia28.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia29.getText()))
                     {
-                        //dia29.setText(dia29.getText() + encomenda.getId());
-                        dia29.setText("29 X");
+                        dia29.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia30.getText()))
                     {
-                        //dia30.setText(dia30.getText() + encomenda.getId());
-                        dia30.setText("30 X");
+                        dia30.setText("0");
                     }
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia31.getText()))
                     {
-                        //dia31.setText(dia31.getText() + encomenda.getId());
-                        dia31.setText("31 X");
+                        dia31.setText("0");
                     }
                 }
             }
