@@ -18,7 +18,10 @@ public class Encomenda
     private double valorTotal;
     private double gastoTotal;
     private String info;
-    private List<Produto> produtos;
+    //private List<Produto> produtos;
+    
+    private List<Bolo> bolos;
+    private List<Doce> doces;
     
     public Encomenda(Cliente cliente, Data dataDoPedido, Data dataDeEntrega, String info)
     {
@@ -28,24 +31,52 @@ public class Encomenda
         this.valorTotal = 0;
         this.gastoTotal = 0;
         this.info = info;
-        produtos = new ArrayList<Produto>();
+        //produtos = new ArrayList<Produto>();
+        
+        bolos = new ArrayList<Bolo>();
+        doces = new ArrayList<Doce>();
     }
     
     private void calculaValorGasto()
     {
         this.valorTotal = 0;
         this.gastoTotal = 0;
+        /*
         for(Produto produto : produtos)
         {
             this.valorTotal += produto.getValor();
             this.gastoTotal += produto.getCusto();
         }
+        */
+        
+        for(Doce doce : doces)
+        {
+            this.valorTotal += doce.getValor();
+            this.gastoTotal += doce.getCusto();
+        }
+        for(Bolo bolo : bolos)
+        {
+            this.valorTotal += bolo.getValor();
+            this.gastoTotal += bolo.getCusto();
+        }
+        
     }
     
-    
+    /*
     public void addProduto(Produto produto)
     {
         produtos.add(produto);
+    }
+    */
+    
+    public void addDoce(Doce doce)
+    {
+        doces.add(doce);
+    }
+    
+    public void addBolo(Bolo bolo)
+    {
+        bolos.add(bolo);
     }
     
     public Cliente getCliente()
@@ -80,6 +111,7 @@ public class Encomenda
         return this.info;
     }
 
+    /*
     public List<Produto> getProdutos() 
     {
         return produtos;
@@ -89,6 +121,7 @@ public class Encomenda
     {
         this.produtos = produtos;
     }
+    */
     
     public void setCliente(Cliente cliente)
     {

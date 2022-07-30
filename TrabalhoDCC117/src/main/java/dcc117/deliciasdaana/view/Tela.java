@@ -119,6 +119,9 @@ public class Tela extends JFrame
     private JList<Encomenda> encomendas;
     private JList<Produto> produtos;
     
+    private JList<Doce> doces;
+    private JList<Bolo> bolos;
+    
     private final ImageIcon imagemLogo = new ImageIcon("images/logo.jpg");
     private final ImageIcon imagemSetaLogin = new ImageIcon("images/seta.jpg");
     private final ImageIcon imagemSetaSair = new ImageIcon("images/sair.jpg");
@@ -596,9 +599,24 @@ public class Tela extends JFrame
         clientes.setVisible(true);
         clientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
-        produtos = new JList(usuario.getProdutos().toArray());
-        produtos.setVisible(true);
-        produtos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        JPanel painelProdutos = new JPanel();
+        painelProdutos.setBackground(new Color(239,186,237));
+        painelProdutos.setLayout(new GridLayout(0,2));
+        
+        doces = new JList(usuario.getDoces().toArray());
+        doces.setVisible(true);
+        doces.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        
+        bolos = new JList(usuario.getBolos().toArray());
+        bolos.setVisible(true);
+        bolos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        
+        painelProdutos.add(new JScrollPane(bolos));
+        painelProdutos.add(new JScrollPane(doces));
+        
+        //produtos = new JList(usuario.getProdutos().toArray());
+        //produtos.setVisible(true);
+        //produtos.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         
         JPanel painelDataEntrega;
         painelDataEntrega = new JPanel();
@@ -632,7 +650,8 @@ public class Tela extends JFrame
         
         
         painelFuncoes.add(new JScrollPane(clientes),BorderLayout.CENTER);
-        painelFuncoes.add(new JScrollPane(produtos),BorderLayout.SOUTH);
+        painelFuncoes.add(painelProdutos,BorderLayout.SOUTH);
+        //painelFuncoes.add(new JScrollPane(produtos),BorderLayout.SOUTH);
         
         painelFuncoes.add(painelFuncoesEntrega,BorderLayout.NORTH);
         this.painelRegistraEncomenda.add(painelFuncoes,BorderLayout.CENTER);
@@ -1573,6 +1592,16 @@ public class Tela extends JFrame
     {
         return produtos;
     }
+
+    public JList<Doce> getDoces() 
+    {
+        return doces;
+    }
+
+    public JList<Bolo> getBolos() 
+    {
+        return bolos;
+    } 
 
     public JLabel getDia1() 
     {

@@ -39,20 +39,22 @@ public class cadastrar implements ActionListener
                 if(TelaId == 2)
                 {
                     int idCliente = tela.getClientes().getSelectedIndex();
-                    int idProduto = tela.getProdutos().getSelectedIndex();
+                    //int idProduto = tela.getProdutos().getSelectedIndex();
+                    
+                    int idBolo = tela.getDoces().getSelectedIndex();
+                    int idDoce = tela.getBolos().getSelectedIndex();
                     
                     if(idCliente == -1) 
                     {
                         JOptionPane.showMessageDialog(tela, "ERRO:Selecione um cliente");
                     }else
                         {
-                            if(idProduto == -1)
+                            if(idBolo == -1 && idDoce == -1/*idProduto == -1*/)
                             {
                                 JOptionPane.showMessageDialog(tela, "ERRO:Selecione um ou  mais produtos");
                             }else
                                 {
-                                    //DefaultListModel<Cliente> modelClientes = (DefaultListModel<Cliente>) tela.getClientes().getModel();
-                                    Cliente cliente = tela.getUsuario().getClientes().get(idCliente);//modelClientes.getElementAt(idCliente);
+                                    Cliente cliente = tela.getUsuario().getClientes().get(idCliente);
                                     
                                     
                                     if((Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()) <= 0 || Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()) <= 0) || (Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()) > 12 || Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()) > 12))
@@ -74,11 +76,23 @@ public class cadastrar implements ActionListener
                                         {
                                             Data dataPedido = new Data(Integer.parseInt(tela.getCadastrarDataPedidoDia().getText()), Integer.parseInt(tela.getCadastrarDataPedidoMes().getText()), Integer.parseInt(tela.getCadastrarDataPedidoAno().getText()));
                                             Data dataEntrega = new Data(Integer.parseInt(tela.getCadastrarDataEntregaDia().getText()), Integer.parseInt(tela.getCadastrarDataEntregaMes().getText()), Integer.parseInt(tela.getCadastrarDataEntregaAno().getText()));
-                                            Encomenda encomenda = new Encomenda(cliente/*modelClientes.getElementAt(idCliente)*/, dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
-
+                                            Encomenda encomenda = new Encomenda(cliente, dataPedido, dataEntrega, tela.getCadastrarEncomendaInfo().getText());
+                                            
+                                            /*
                                             for(Produto produtos : tela.getProdutos().getSelectedValuesList())
                                             {
                                                 encomenda.addProduto(produtos);
+                                            }
+                                            */
+                                            
+                                            for(Doce doce : tela.getDoces().getSelectedValuesList())
+                                            {
+                                                encomenda.addDoce(doce);
+                                            }
+                                            
+                                            for(Bolo bolo : tela.getBolos().getSelectedValuesList())
+                                            {
+                                                encomenda.addBolo(bolo);
                                             }
 
                                             tela.getUsuario().addEncomenda(encomenda);

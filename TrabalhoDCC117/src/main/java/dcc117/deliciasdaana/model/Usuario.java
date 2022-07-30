@@ -13,15 +13,21 @@ import java.util.*;
 public class Usuario 
 {
     private String senha;
-    private List<Encomenda> encomendas; //= new ArrayList<Encomenda>();
-    private List<Cliente> clientes; // = new ArrayList<Cliente>();
-    private List<Produto> produtos; //= new ArrayList<Produto>();
+    private List<Encomenda> encomendas;
+    private List<Cliente> clientes;
+    private List<Produto> produtos;
+    
+    private List<Doce> doces;
+    private List<Bolo> bolos;
     
     public Usuario()
     {
         clientes = new ArrayList<Cliente>();
         encomendas = new ArrayList<Encomenda>();
         produtos = new ArrayList<Produto>();
+        
+        doces =  new ArrayList<Doce>();
+        bolos =  new ArrayList<Bolo>();
     }
     
     public void addCliente(Cliente cliente)
@@ -37,6 +43,17 @@ public class Usuario
     public void addProduto(Produto produto)
     {
         produtos.add(produto);
+    }
+    
+    
+    public void addBolo(Bolo bolo)
+    {
+       bolos.add(bolo);
+    }
+    
+    public void addDoce(Doce doce)
+    {
+        doces.add(doce);
     }
     
     //get
@@ -59,6 +76,16 @@ public class Usuario
     {
         return produtos;
     }
+
+    public List<Doce> getDoces() 
+    {
+        return doces;
+    }
+
+    public List<Bolo> getBolos() 
+    {
+        return bolos;
+    }
     
     //set
     public void setSenha(String senha)
@@ -80,7 +107,15 @@ public class Usuario
     {
         this.produtos = produtos;
     }
-    
-    
-    
+
+    public void setDoces(List<Doce> doces) 
+    {
+        this.doces = doces;
+    }
+
+    public void setBolos(List<Bolo> bolos) 
+    {
+        this.bolos = bolos;
+    }
+     
 }
