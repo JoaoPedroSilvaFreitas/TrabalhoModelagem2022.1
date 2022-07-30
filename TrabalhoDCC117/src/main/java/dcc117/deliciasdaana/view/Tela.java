@@ -132,6 +132,7 @@ public class Tela extends JFrame
     private final ImageIcon imagemCalendario = new ImageIcon("images/botaoCalendario.jpg");
     private final ImageIcon imagemRelatorio = new ImageIcon("images/botaoRelatorio.jpg");
     private final ImageIcon imagemRegistra = new ImageIcon("images/botaoRegistrar.jpg");
+    private final ImageIcon imagemRemove = new ImageIcon("images/botaoRemover.jpg");
     
  
     public void atualizaClientes()
@@ -531,8 +532,6 @@ public class Tela extends JFrame
         this.painelRegistraEncomenda.setLayout(new BorderLayout());
         this.painelRegistraEncomenda.setBackground(new Color(239,186,237));
         
-        //att();
-        
         telaRegistraEncomendaAux();
         
         this.add(this.painelRegistraEncomenda);
@@ -555,13 +554,27 @@ public class Tela extends JFrame
         sairBtn.addActionListener(new Sair(this,3));
         this.painelRegistraEncomenda.add(sairBtn,BorderLayout.WEST);
         
+        JPanel painelLeste = new JPanel();
+        painelLeste.setBackground(new Color(239,186,237));
+        painelLeste.setLayout(new GridLayout(2,0));
+        
         JButton cadastrarBtn;
         cadastrarBtn = new JButton("",imagemRegistra);
         cadastrarBtn.setBackground(new Color(106,64,24));
         cadastrarBtn.setBorderPainted(false);
         cadastrarBtn.addActionListener(new cadastrar(this,2));
-        this.painelRegistraEncomenda.add(cadastrarBtn,BorderLayout.EAST);
+        //this.painelRegistraEncomenda.add(cadastrarBtn,BorderLayout.EAST);
+        painelLeste.add(cadastrarBtn);
         
+        JButton removerBtn;
+        removerBtn = new JButton("",imagemRemove);
+        removerBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        removerBtn.setBackground(new Color(239,186,237));
+        removerBtn.setBorderPainted(false);
+        removerBtn.addActionListener(new remover(this,1));
+        painelLeste.add(removerBtn);
+        
+        this.painelRegistraEncomenda.add(painelLeste,BorderLayout.EAST);
         
         JPanel painelFuncoes;
         painelFuncoes = new JPanel();
@@ -592,8 +605,6 @@ public class Tela extends JFrame
         cadastrarDataPedidoAno = new JTextField(4);
         cadastrarDataPedidoAno.setFont(new Font("Arial", Font.PLAIN, 50));
         painelDataPedido.add(cadastrarDataPedidoAno);
-        
-        
         
         clientes = new JList(usuario.getClientes().toArray());
         clientes.setVisible(true);
@@ -909,11 +920,27 @@ public class Tela extends JFrame
         painelFuncoes.setBackground(new Color(239,186,237));
         painelFuncoes.setLayout(new BorderLayout());
         
+        JPanel painelLeste = new JPanel();
+        painelLeste.setBackground(new Color(239,186,237));
+        painelLeste.setLayout(new GridLayout(2,0));
+        
         encomendas = new JList(usuario.getEncomendas().toArray());
         encomendas.setVisible(true);
         encomendas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         encomendas.addListSelectionListener(new relatorioInfo(this));
-        painelFuncoes.add(new JScrollPane(encomendas),BorderLayout.EAST);
+        //painelFuncoes.add(new JScrollPane(encomendas),BorderLayout.EAST);
+        
+        painelLeste.add(new JScrollPane(encomendas));
+        
+        JButton removerBtn;
+        removerBtn = new JButton("",imagemRemove);
+        removerBtn.setFont(new Font("Arial", Font.PLAIN, 26));
+        removerBtn.setBackground(new Color(239,186,237));
+        removerBtn.setBorderPainted(false);
+        removerBtn.addActionListener(new remover(this,2));
+        painelLeste.add(removerBtn);
+        
+        painelFuncoes.add(painelLeste, BorderLayout.EAST);
         
         JPanel painelInfo;
         painelInfo = new JPanel();
@@ -1767,14 +1794,41 @@ public class Tela extends JFrame
     {
         return calendarioAno;
     }
-    
-    
 
+    public boolean getAtualizaClientes() 
+    {
+        return atualizaClientes;
+    }
+
+    public boolean getAtualizaEncomendas() 
+    {
+        return atualizaEncomendas;
+    }
     
     //set
     public void setSenha(JPasswordField senha)
     {
         this.senha = senha;
+    }
+
+    public void setEncomendas(JList<Encomenda> encomendas) 
+    {
+        this.encomendas = encomendas;
+    }
+
+    public void setProdutos(JList<Produto> produtos) 
+    {
+        this.produtos = produtos;
+    }
+
+    public void setDoces(JList<Doce> doces) 
+    {
+        this.doces = doces;
+    }
+
+    public void setBolos(JList<Bolo> bolos) 
+    {
+        this.bolos = bolos;
     }
 
     public void setCadastrarDataEntregaDia(JTextField cadastrarDataEntregaDia) 
