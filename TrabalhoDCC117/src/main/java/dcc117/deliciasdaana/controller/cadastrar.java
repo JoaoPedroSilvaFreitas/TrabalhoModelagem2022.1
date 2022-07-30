@@ -87,18 +87,7 @@ public class cadastrar implements ActionListener
                                         }                                                                        
                                 }
                         }
-                }else
-                    {
-                        if(TelaId == 3)
-                        {
-                            double valor = Double.parseDouble(tela.getCadastrarValorIngrediente().getText());
-                            int quantidade = Integer.parseInt(tela.getCadastrarQuantidadeIngrediente().getText());
-                            Ingrediente ingrediente = new Ingrediente(tela.getCadastrarNomeIngrediente().getText(),valor , quantidade);
-                            tela.getUsuario().addIngrediente(ingrediente);
-                            JOptionPane.showMessageDialog(tela, "Ingrediente " + tela.getUsuario().getIngredientes().get(tela.getUsuario().getIngredientes().size()-1).getNome() + " adicionado com sucesso!");
-                            tela.repaint();
-                        }
-                    }
+                }
             }
     }
 }

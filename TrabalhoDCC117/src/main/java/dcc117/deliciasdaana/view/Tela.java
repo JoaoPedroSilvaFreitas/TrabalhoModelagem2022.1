@@ -31,7 +31,6 @@ public class Tela extends JFrame
     
     private JPanel painelRegistraProduto;
     
-    private JPanel painelRegistraIngrediente;
     private JPanel painelConsultaGastoLucro;
     private JPanel painelRelatorio;
     private JPanel painelCalendario;
@@ -40,9 +39,6 @@ public class Tela extends JFrame
     private JTextField cadastrarTelefoneCliente;
     private JTextField cadastrarEnderecoCliente;
     
-    private JTextField cadastrarNomeIngrediente;
-    private JTextField cadastrarValorIngrediente;
-    private JTextField cadastrarQuantidadeIngrediente;
     
     private JTextField cadastrarDataPedidoDia;
     private JTextField cadastrarDataPedidoMes;
@@ -120,7 +116,6 @@ public class Tela extends JFrame
     private JLabel consultaGasto;
     
     private JList<Cliente> clientes;
-    private JList<Ingrediente> ingredientes;
     private JList<Encomenda> encomendas;
     private JList<Produto> produtos;
     
@@ -185,14 +180,11 @@ public class Tela extends JFrame
         DefaultListModel<Cliente> modelClientes = new DefaultListModel<>();
         clientes = new JList<>(modelClientes);
         
-        DefaultListModel<Ingrediente> modelIngrediente = new DefaultListModel<>();
-        ingredientes = new JList<>(modelIngrediente);
-        
-        
         DefaultListModel<Encomenda> modelEncomenda = new DefaultListModel<>();
         encomendas = new JList<>(modelEncomenda);
         
         atualizaClientes = true;
+        atualizaEncomendas = true;
         
         this.addWindowListener(new atualizaDados(this));
     }
@@ -1067,130 +1059,131 @@ public class Tela extends JFrame
         JPanel painelDias;
         painelDias = new JPanel();
         painelDias.setBackground(new Color(239,186,237));
+        painelDias.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         painelDias.setLayout(new GridLayout(0,6));
              
         dia1 = new JLabel("1");
-        dia1.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia1.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia1);
         
         dia2 = new JLabel("2");
-        dia2.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia2.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia2);
         
         dia3 = new JLabel("3");
-        dia3.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia3.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia3);
         
         dia4 = new JLabel("4");
-        dia4.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia4.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia4);
         
         dia5 = new JLabel("5");
-        dia5.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia5.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia5);
         
         dia6 = new JLabel("6");
-        dia6.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia6.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia6);
         
         dia7 = new JLabel("7");
-        dia7.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia7.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia7);
         
         dia8 = new JLabel("8");
-        dia8.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia8.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia8);
         
         dia9 = new JLabel("9");
-        dia9.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia9.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia9);
         
         dia10 = new JLabel("10");
-        dia10.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia10.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia10);
         
         dia11 = new JLabel("11");
-        dia11.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia11.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia11);
         
         dia12 = new JLabel("12");
-        dia12.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia12.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia12);
         
         dia13 = new JLabel("13");
-        dia13.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia13.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia13);
         
         dia14 = new JLabel("14");
-        dia14.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia14.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia14);
         
         dia15 = new JLabel("15");
-        dia15.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia15.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia15);
         
         dia16 = new JLabel("16");
-        dia16.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia16.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia16);
         
         dia17 = new JLabel("17");
-        dia17.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia17.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia17);
         
         dia18 = new JLabel("18");
-        dia18.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia18.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia18);
         
         dia19 = new JLabel("19");
-        dia19.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia19.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia19);
         
         dia20 = new JLabel("20");
-        dia20.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia20.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia20);
         
         dia21 = new JLabel("21");
-        dia21.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia21.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia21);
         
         dia22 = new JLabel("22");
-        dia22.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia22.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia22);
         
         dia23 = new JLabel("23");
-        dia23.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia23.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia23);
         
         dia24 = new JLabel("24");
-        dia24.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia24.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia24);
         
         dia25 = new JLabel("25");
-        dia25.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia25.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia25);
         
         dia26 = new JLabel("26");
-        dia26.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia26.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia26);
         
         dia27 = new JLabel("27");
-        dia27.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia27.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia27);
         
         dia28 = new JLabel("28");
-        dia28.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia28.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia28);
         
         dia29 = new JLabel("29");
-        dia29.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia29.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia29);
         
         dia30 = new JLabel("30");
-        dia30.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia30.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia30);
         
         dia31 = new JLabel("31");
-        dia31.setFont(new Font("Arial", Font.PLAIN, 20));
+        dia31.setFont(new Font("Arial", Font.BOLD, 20));
         painelDias.add(dia31);
 
 
@@ -1203,6 +1196,7 @@ public class Tela extends JFrame
                     
                     if(encomenda.getDataDeEntrega().getDia() == Integer.parseInt(dia1.getText()))
                     {
+
                         dia1.setText("0");
                     }
                     
@@ -1359,6 +1353,18 @@ public class Tela extends JFrame
             }
         }
         
+        JPanel nul0 = new JPanel();
+        nul0.setBackground(new Color(239,186,237));
+        
+        JPanel nul1 = new JPanel();
+        nul1.setBackground(new Color(239,186,237));
+        
+        JPanel nul2 = new JPanel();
+        nul2.setBackground(new Color(239,186,237));
+        
+        painelFuncoes.add(nul0,BorderLayout.WEST);
+        painelFuncoes.add(nul1,BorderLayout.SOUTH);
+        painelFuncoes.add(nul2,BorderLayout.EAST);
         painelFuncoes.add(painelDias, BorderLayout.CENTER);
         painelFuncoes.add(painelMeses, BorderLayout.NORTH);
         this.painelCalendario.add(painelFuncoes,BorderLayout.CENTER);
@@ -1397,21 +1403,6 @@ public class Tela extends JFrame
     {
         return cadastrarEnderecoCliente;
     }
-    
-    public JTextField getCadastrarNomeIngrediente() 
-    {
-        return cadastrarNomeIngrediente;
-    }
-    
-    public JTextField getCadastrarQuantidadeIngrediente() 
-    {
-        return cadastrarQuantidadeIngrediente;
-    }
-    
-    public JTextField getCadastrarValorIngrediente() 
-    {
-        return cadastrarValorIngrediente;
-    }
 
     public JTextField getCadastrarDataPedidoDia() 
     {
@@ -1431,11 +1422,6 @@ public class Tela extends JFrame
     public JList<Cliente> getClientes() 
     {
         return clientes;
-    }
-
-    public JList<Ingrediente> getIngredientes() 
-    {
-        return ingredientes;
     }
 
     public JList<Encomenda> getEncomendas() 
@@ -1847,21 +1833,6 @@ public class Tela extends JFrame
         this.cadastrarEnderecoCliente = cadastrarEnderecoCliente;
     }
 
-    public void setCadastrarNomeIngrediente(JTextField cadastrarNomeIngrediente) 
-    {
-        this.cadastrarNomeIngrediente = cadastrarNomeIngrediente;
-    }
-
-    public void setCadastrarValorIngrediente(JTextField cadastrarValorIngrediente) 
-    {
-        this.cadastrarValorIngrediente = cadastrarValorIngrediente;
-    }
-
-    public void setCadastrarQuantidadeIngrediente(JTextField cadastrarQuantidadeIngrediente) 
-    {
-        this.cadastrarQuantidadeIngrediente = cadastrarQuantidadeIngrediente;
-    }
-
     public void setCadastrarDataPedidoDia(JTextField cadastrarDataPedidoDia) 
     {
         this.cadastrarDataPedidoDia = cadastrarDataPedidoDia;
@@ -1972,11 +1943,6 @@ public class Tela extends JFrame
     public void visibilidadeTelaRegistraCliente()
     {
         this.painelRegistraCliente.setVisible(false);
-    }
-    
-    public void visibilidadeTelaRegistraIngrediente()
-    {
-        this.painelRegistraIngrediente.setVisible(false);
     }
     
     public void visibilidadeTelaConsultaGastoLucro()

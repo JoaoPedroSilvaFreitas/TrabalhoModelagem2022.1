@@ -15,7 +15,6 @@ public class Usuario
     private String senha;
     private List<Encomenda> encomendas; //= new ArrayList<Encomenda>();
     private List<Cliente> clientes; // = new ArrayList<Cliente>();
-    private List<Ingrediente> ingredientes; //= new ArrayList<Ingrediente>();
     private List<Produto> produtos; //= new ArrayList<Produto>();
     
     public Usuario()
@@ -33,11 +32,6 @@ public class Usuario
     public void addEncomenda(Encomenda encomenda)
     {
         encomendas.add(encomenda);
-    }
-    
-    public void addIngrediente(Ingrediente ingrediente)
-    {
-        ingredientes.add(ingrediente);
     }
     
     public void addProduto(Produto produto)
@@ -61,11 +55,6 @@ public class Usuario
         return clientes;
     }
 
-    public List<Ingrediente> getIngredientes() 
-    {
-        return ingredientes;
-    }
-
     public List<Produto> getProdutos() 
     {
         return produtos;
@@ -85,11 +74,6 @@ public class Usuario
     public void setClientes(List<Cliente> clientes) 
     {
         this.clientes = clientes;
-    }
-    
-    public void setIngredientes(List<Ingrediente> ingredientes) 
-    {
-        this.ingredientes = ingredientes;
     }
 
     public void setProdutos(List<Produto> produtos) 

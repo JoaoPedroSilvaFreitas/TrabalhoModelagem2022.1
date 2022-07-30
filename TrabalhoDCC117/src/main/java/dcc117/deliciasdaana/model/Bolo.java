@@ -15,7 +15,6 @@ public class Bolo extends Produto
     private String saborMassa;
     private String saborRecheio;
     private String tamanho;
-    private List<Ingrediente> ingredientes;
    
     public Bolo(String saborMassa, String saborRecheio, String tamanho, String info, double valor, double custo)
     {

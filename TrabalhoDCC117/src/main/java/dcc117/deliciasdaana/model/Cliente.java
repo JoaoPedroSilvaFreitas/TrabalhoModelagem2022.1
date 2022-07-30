@@ -12,7 +12,6 @@ import java.util.*;
  */
 public class Cliente 
 {
-    private int id;
     private String nome;
     private String telefone;
     private String endereco;
@@ -23,12 +22,6 @@ public class Cliente
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
-    }
-    
-    
-    public int getId()
-    {
-        return this.id;
     }
     
     public String getNome()
@@ -44,11 +37,6 @@ public class Cliente
     public String getEndereco()
     {
         return this.endereco;
-    }
-    
-    public void setId(int id)
-    {
-        this.id = id;
     }
     
     public void setNome(String nome)
@@ -70,7 +58,7 @@ public class Cliente
     @Override
     public String toString()
     {
-        return this.nome;
+        return this.nome + "    " + this.telefone + "   " + this.endereco;
     }
     
 }

@@ -13,7 +13,6 @@ import java.util.*;
 public class Doce extends Produto
 {
     private String sabor;
-    private List<Ingrediente> ingredientes;
     
     public Doce(String sabor, String info, double valor, double custo)
     {
@@ -31,16 +30,6 @@ public class Doce extends Produto
     public String getSabor()
     {
         return this.sabor;
-    }
-    
-    public void setIngredientes(List<Ingrediente> ingredientes) 
-    {
-        this.ingredientes = ingredientes;
-    }
-    
-    public List<Ingrediente> getIngredientes() 
-    {
-        return ingredientes;
     }
     
     //toString
